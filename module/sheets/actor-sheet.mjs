@@ -9,7 +9,7 @@ export class ActorSheetFTD extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["boilerplate", "sheet", "actor"],
+      classes: ["fivetorchesdeep", "sheet", "actor"],
       template: "systems/fivetorchesdeep/templates/actor/actor-sheet.html",
       width: 600,
       height: 600,
