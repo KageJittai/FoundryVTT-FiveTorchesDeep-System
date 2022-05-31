@@ -1,23 +1,23 @@
-export const BOILERPLATE = {};
+export const FTD = {};
 
 /**
  * The set of Ability Scores used within the sytem.
  * @type {Object}
  */
- BOILERPLATE.abilities = {
-  "str": "BOILERPLATE.AbilityStr",
-  "dex": "BOILERPLATE.AbilityDex",
-  "con": "BOILERPLATE.AbilityCon",
-  "int": "BOILERPLATE.AbilityInt",
-  "wis": "BOILERPLATE.AbilityWis",
-  "cha": "BOILERPLATE.AbilityCha"
+ FTD.abilities = {
+  "str": "FTD.AbilityStr",
+  "dex": "FTD.AbilityDex",
+  "con": "FTD.AbilityCon",
+  "int": "FTD.AbilityInt",
+  "wis": "FTD.AbilityWis",
+  "cha": "FTD.AbilityCha"
 };
 
-BOILERPLATE.abilityAbbreviations = {
-  "str": "BOILERPLATE.AbilityStrAbbr",
-  "dex": "BOILERPLATE.AbilityDexAbbr",
-  "con": "BOILERPLATE.AbilityConAbbr",
-  "int": "BOILERPLATE.AbilityIntAbbr",
-  "wis": "BOILERPLATE.AbilityWisAbbr",
-  "cha": "BOILERPLATE.AbilityChaAbbr"
+FTD.abilityAbbreviations = {
+  "str": "FTD.AbilityStrAbbr",
+  "dex": "FTD.AbilityDexAbbr",
+  "con": "FTD.AbilityConAbbr",
+  "int": "FTD.AbilityIntAbbr",
+  "wis": "FTD.AbilityWisAbbr",
+  "cha": "FTD.AbilityChaAbbr"
 };

@@ -1,22 +1,22 @@
 {
-  "BOILERPLATE.AbilityStr": "Strength",
-  "BOILERPLATE.AbilityCon": "Constitution",
-  "BOILERPLATE.AbilityDex": "Dexterity",
-  "BOILERPLATE.AbilityInt": "Intelligence",
-  "BOILERPLATE.AbilityWis": "Wisdom",
-  "BOILERPLATE.AbilityCha": "Charisma",
+  "FTD.AbilityStr": "Strength",
+  "FTD.AbilityCon": "Constitution",
+  "FTD.AbilityDex": "Dexterity",
+  "FTD.AbilityInt": "Intelligence",
+  "FTD.AbilityWis": "Wisdom",
+  "FTD.AbilityCha": "Charisma",
 
-  "BOILERPLATE.AbilityStrAbbr": "str",
-  "BOILERPLATE.AbilityConAbbr": "con",
-  "BOILERPLATE.AbilityDexAbbr": "dex",
-  "BOILERPLATE.AbilityIntAbbr": "int",
-  "BOILERPLATE.AbilityWisAbbr": "wis",
-  "BOILERPLATE.AbilityChaAbbr": "cha",
+  "FTD.AbilityStrAbbr": "str",
+  "FTD.AbilityConAbbr": "con",
+  "FTD.AbilityDexAbbr": "dex",
+  "FTD.AbilityIntAbbr": "int",
+  "FTD.AbilityWisAbbr": "wis",
+  "FTD.AbilityChaAbbr": "cha",
 
-  "BOILERPLATE.EffectCreate": "Create Effect",
-  "BOILERPLATE.EffectToggle": "Toggle Effect",
-  "BOILERPLATE.EffectEdit": "Edit Effect",
-  "BOILERPLATE.EffectDelete": "Delete Effect",
+  "FTD.EffectCreate": "Create Effect",
+  "FTD.EffectToggle": "Toggle Effect",
+  "FTD.EffectEdit": "Edit Effect",
+  "FTD.EffectDelete": "Delete Effect",
 
-  "BOILERPLATE.Add": "Add"
+  "FTD.Add": "Add"
 }
