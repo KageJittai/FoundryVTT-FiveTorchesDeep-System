@@ -16,7 +16,7 @@ Hooks.once('init', async function() {
 
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
-  game.boilerplate = {
+  game.fivetorchesdeep = {
     ActorFTD,
     ItemFTD,
     rollItemMacro
@@ -40,9 +40,9 @@ Hooks.once('init', async function() {
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("boilerplate", ActorSheetFTD, { makeDefault: true });
+  Actors.registerSheet("fivetorchesdeep", ActorSheetFTD, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("boilerplate", ItemSheetFTD, { makeDefault: true });
+  Items.registerSheet("fivetorchesdeep", ItemSheetFTD, { makeDefault: true });
 
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();
@@ -93,7 +93,7 @@ async function createItemMacro(data, slot) {
   const item = data.data;
 
   // Create the macro command
-  const command = `game.boilerplate.rollItemMacro("${item.name}");`;
+  const command = `game.ftd.rollItemMacro("${item.name}");`;
   let macro = game.macros.find(m => (m.name === item.name) && (m.command === command));
   if (!macro) {
     macro = await Macro.create({
@@ -101,7 +101,7 @@ async function createItemMacro(data, slot) {
       type: "script",
       img: item.img,
       command: command,
-      flags: { "boilerplate.itemMacro": true }
+      flags: { "ftd.itemMacro": true }
     });
   }
   game.user.assignHotbarMacro(macro, slot);
