@@ -1,6 +1,6 @@
-# Boilerplate System
+# Five Torches Deep System
 
-This system is a boilerplate system that you can use as a starting point for building your own custom systems. It's similar to Simple World-building, but has examples of creating attributes in code rather than dynamically through the UI.
+This is the foundry VTT system for Five Torches Deep. A system which seeks to strip 5e core math to it's skeleton while fleshing it out with OSR elements. For more information on FTD please visit their [website](https://www.fivetorchesdeep.com/).
 
 ## Usage
 
