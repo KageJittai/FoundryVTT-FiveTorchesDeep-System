@@ -6,12 +6,12 @@
   "FTD.AbilityWis": "Wisdom",
   "FTD.AbilityCha": "Charisma",
 
-  "FTD.AbilityStrAbbr": "str",
-  "FTD.AbilityConAbbr": "con",
-  "FTD.AbilityDexAbbr": "dex",
-  "FTD.AbilityIntAbbr": "int",
-  "FTD.AbilityWisAbbr": "wis",
-  "FTD.AbilityChaAbbr": "cha",
+  "FTD.AbilityStrAbbr": "STR",
+  "FTD.AbilityConAbbr": "CON",
+  "FTD.AbilityDexAbbr": "DEX",
+  "FTD.AbilityIntAbbr": "INT",
+  "FTD.AbilityWisAbbr": "WIS",
+  "FTD.AbilityChaAbbr": "CHA",
 
   "FTD.EffectCreate": "Create Effect",
   "FTD.EffectToggle": "Toggle Effect",
