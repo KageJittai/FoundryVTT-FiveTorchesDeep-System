@@ -4,6 +4,7 @@ import { ItemFTD } from "./documents/item.mjs";
 // Import sheet classes.
 import { ActorSheetFTD } from "./sheets/actor-sheet.mjs";
 import { ItemSheetFTD } from "./sheets/item-sheet.mjs";
+import { NpcSkillsDialog } from "./apps/npc-skills-dialog.mjs"
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { FTD } from "./helpers/config.mjs";
@@ -19,6 +20,7 @@ Hooks.once('init', async function() {
   game.fivetorchesdeep = {
     ActorFTD,
     ItemFTD,
+    NpcSkillsDialog,
     rollItemMacro
   };
 

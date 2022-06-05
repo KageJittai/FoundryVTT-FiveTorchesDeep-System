@@ -63,7 +63,14 @@ export class ActorFTD extends Actor {
 
     // Make modifications to data here. For example:
     const data = actorData.data;
-    data.xp = (data.cr * data.cr) * 100;
+    const halfHd = Math.floor(data.hd / 2);
+    data.mods = {
+      "weak": Math.min(halfHd - 2, 8),
+      "normal": Math.min(halfHd + 2, 10),
+      "strong": Math.min(Math.floor(data.hd) + 2, 12)
+    };
+    
+    data.avghp = Math.ceil(data.hd * 4.5);
   }
 
   /**
@@ -106,6 +113,10 @@ export class ActorFTD extends Actor {
     if (this.data.type !== 'npc') return;
 
     // Process additional NPC data here.
+
+    data.basemod = this.data.data.mods.normal;
+    data.weakmod = this.data.data.mods.weak;
+    data.strongmod = this.data.data.mods.strong;
   }
 
 }

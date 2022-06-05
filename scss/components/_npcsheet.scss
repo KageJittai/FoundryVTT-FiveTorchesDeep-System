@@ -1,0 +1,43 @@
+.npc-box {
+    border: 1px black solid;
+    padding: 6px;
+}
+
+.prof-header {
+    height: 28px;
+    margin: 2px 0;
+    padding: 0;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.05);
+    border: $border-groove;
+    font-weight: bold;
+    > * {
+      font-size: 14px;
+      text-align: center;
+    }
+}
+
+.prof-list {
+    padding-left: 0;
+}
+
+.prof-item { 
+    border-bottom: 1px solid #c9c7b8;
+}
+
+.prof-item:last-child {
+    border-bottom: none;
+}
+
+.prof-roll a,
+.prof-name,
+.prof-actions {
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prof-roll img {
+    max-width: initial;
+}

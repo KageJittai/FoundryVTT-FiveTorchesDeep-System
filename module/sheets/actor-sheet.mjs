@@ -1,4 +1,5 @@
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
+import {NpcSkillsDialog} from "../apps/npc-skills-dialog.mjs"
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -48,6 +49,7 @@ export class ActorSheetFTD extends ActorSheet {
     // Prepare NPC data and items.
     if (actorData.type == 'npc') {
       this._prepareItems(context);
+      this._prepareNpcData(context);
     }
 
     // Add roll data for TinyMCE editors.
@@ -55,6 +57,8 @@ export class ActorSheetFTD extends ActorSheet {
 
     // Prepare active effects
     context.effects = prepareActiveEffectCategories(this.actor.effects);
+
+    console.log(context);
 
     return context;
   }
@@ -71,6 +75,34 @@ export class ActorSheetFTD extends ActorSheet {
     for (let [k, v] of Object.entries(context.data.abilities)) {
       v.label = game.i18n.localize(CONFIG.FTD.abilities[k]) ?? k;
     }
+  }
+
+  _prepareNpcData(context) {
+    context.hdList = [
+      { "value": 0.25, "text": "1/4" },
+      { "value": 0.5, "text": "1/2" }
+    ];
+
+    for (let i = 1; i <= 18; i++) {
+      context.hdList.push({
+        "value": i,
+        "text": i.toString()
+      });
+    }
+
+    context.categoryList = [
+      "Brute",
+      "Leader",
+      "Predator",
+      "Shaper",
+      "Sniper",
+      "Soldier"
+    ];
+
+    context.strongList = this.actor.data.data
+        .strong.split(";").map(p => p.trim());
+    context.weakList = this.actor.data.data
+        .weak.split(";").map(p => p.trim());
   }
 
   /**
@@ -90,12 +122,9 @@ export class ActorSheetFTD extends ActorSheet {
       2: [],
       3: [],
       4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: []
+      5: []
     };
+    const techniques = [];
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
@@ -114,12 +143,21 @@ export class ActorSheetFTD extends ActorSheet {
           spells[i.data.spellLevel].push(i);
         }
       }
+      // Append to techniques
+      else if (i.type === 'technique') {
+        techniques.push({
+          _id: i._id,
+          name: i.name,
+          description: TextEditor.enrichHTML(i.data.description)
+        });
+      }
     }
 
     // Assign and return
     context.gear = gear;
     context.features = features;
     context.spells = spells;
+    context.techniques = techniques;
   }
 
   /* -------------------------------------------- */
@@ -138,6 +176,20 @@ export class ActorSheetFTD extends ActorSheet {
     // -------------------------------------------------------------
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
+
+    html.find('.npc-skill-edit').click(async ev => {
+      const skill = $(ev.currentTarget).data("skill-set");
+
+      let result = await NpcSkillsDialog.create(this.actor, skill);
+
+      if (result) {
+        let update = {};
+        update[`data.${skill}`] = result.skills;
+        update[`data.${skill}Desc`] = result.desc;
+
+        this.actor.update(update);
+      }
+    });
 
     // Add Inventory Item
     html.find('.item-create').click(this._onItemCreate.bind(this));
@@ -165,6 +217,36 @@ export class ActorSheetFTD extends ActorSheet {
         li.addEventListener("dragstart", handler, false);
       });
     }
+  }
+
+  /** @override */
+  _updateObject(event, update) {
+    
+    /*Object.keys(update).forEach(name => {
+      let compare = name.match(/data\.([a-zA-Z0-9]+)\[([0-9]+)\].?([a-zA-Z0-9]+)?/);
+      if (compare) {
+        // Remove the updated value from update
+        const value = update[name];
+        delete update[name];
+
+        // Update the actor array
+        const index = parseInt(compare[2]);
+
+        if (compare[3]) {
+          // We're updating an object key
+          this.actor.data.data[compare[1]][index][compare[3]] = value;
+        }
+        else {
+          // We're updating the entire object
+          this.actor.data.data[compare[1]][index] = value;
+        }
+
+        // Assign new list to the update
+        update[`data.${compare[1]}`] = this.actor.data.data[compare[1]];
+      }
+    });*/
+
+    super._updateObject(event, update);
   }
 
   /**
@@ -225,5 +307,4 @@ export class ActorSheetFTD extends ActorSheet {
       return roll;
     }
   }
-
 }

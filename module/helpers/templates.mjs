@@ -11,5 +11,6 @@
     "systems/fivetorchesdeep/templates/actor/parts/actor-items.html",
     "systems/fivetorchesdeep/templates/actor/parts/actor-spells.html",
     "systems/fivetorchesdeep/templates/actor/parts/actor-effects.html",
+    "systems/fivetorchesdeep/templates/actor/parts/actor-techniques.html",
   ]);
 };

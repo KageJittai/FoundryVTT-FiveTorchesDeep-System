@@ -3,8 +3,8 @@
     "types": ["character", "npc"],
     "templates": {
       "base": {
-        "name": "",
         "ac": 10,
+        "init": 10,
         "health": {
           "value": 10,
           "min": 0,
@@ -43,15 +43,22 @@
     },
     "npc": {
       "templates": ["base"],
-      "HD": 0.25,
-      "init": 10,
       "category": "Brute",
-      "combat": 0,
-      "damage": "1d8"
+
+      "hd": 0.25,
+
+      "style": "melee",
+      "attack": 2,
+      "damage": "1d8",
+
+      "strong": "Strength 1;Strength2",
+      "strongDesc": "",
+      "weak": "Weakness 1; Weakness2",
+      "weakDesc": ""
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["item", "feature", "spell", "technique"],
     "templates": {
       "base": {
         "description": ""
@@ -69,6 +76,11 @@
     "spell": {
       "templates": ["base"],
       "spellLevel": 1
+    },
+    "technique": {
+      "templates": ["base"],
+      "placeableType": "None",
+      "placeableSize": 0
     }
   }
 }
