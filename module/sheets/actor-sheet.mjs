@@ -27,13 +27,9 @@ export class ActorSheetFTD extends ActorSheet {
 
   /** @override */
   getData() {
-    // Retrieve the data structure from the base sheet. You can inspect or log
-    // the context variable to see the structure, but some key properties for
-    // sheets are the actor object, the data object, whether or not it's
-    // editable, the items array, and the effects array.
     const context = super.getData();
 
-    // Use a safe clone of the actor data for further operations.
+    // Clone Actor data
     const actorData = this.actor.data.toObject(false);
 
     // Add the actor's data to context.data for easier access, as well as flags.
@@ -45,9 +41,7 @@ export class ActorSheetFTD extends ActorSheet {
       this._prepareItems(context);
       this._prepareCharacterData(context);
     }
-
-    // Prepare NPC data and items.
-    if (actorData.type == 'npc') {
+    else if (actorData.type == 'npc') {
       this._prepareItems(context);
       this._prepareNpcData(context);
     }
@@ -55,10 +49,7 @@ export class ActorSheetFTD extends ActorSheet {
     // Add roll data for TinyMCE editors.
     context.rollData = context.actor.getRollData();
 
-    // Prepare active effects
     context.effects = prepareActiveEffectCategories(this.actor.effects);
-
-    console.log(context);
 
     return context;
   }
@@ -90,15 +81,15 @@ export class ActorSheetFTD extends ActorSheet {
       });
     }
 
-    context.categoryList = [
-      "Brute",
-      "Leader",
-      "Predator",
-      "Shaper",
-      "Sniper",
-      "Soldier"
-    ];
+    context.categoryList = [];
+    for (let [k, v] of Object.entries(CONFIG.FTD.Categories)) {
+      context.categoryList.push({
+        value: k,
+        text: game.i18n.localize(v)
+      });
+    }
 
+    // Build proficency lists
     context.strongList = this.actor.data.data
         .strong.split(";").map(p => p.trim());
     context.weakList = this.actor.data.data
@@ -148,6 +139,7 @@ export class ActorSheetFTD extends ActorSheet {
         techniques.push({
           _id: i._id,
           name: i.name,
+          img: i.img,
           description: TextEditor.enrichHTML(i.data.description)
         });
       }
@@ -271,6 +263,11 @@ export class ActorSheetFTD extends ActorSheet {
     };
     // Remove the type from the dataset since it's in the itemData.type prop.
     delete itemData.data["type"];
+
+    if (data.img) {
+      itemData.img = data.img;
+      delete data.img;
+    }
 
     // Finally, create the item!
     return await Item.create(itemData, {parent: this.actor});

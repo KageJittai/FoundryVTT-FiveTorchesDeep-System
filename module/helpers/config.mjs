@@ -21,3 +21,12 @@ FTD.abilityAbbreviations = {
   "wis": "FTD.AbilityWisAbbr",
   "cha": "FTD.AbilityChaAbbr"
 };
+
+FTD.Categories = {
+  "Brute": "FTD.CategoryBrute",
+  "Leader": "FTD.CategoryLeader",
+  "Predator": "FTD.CategoryPredator",
+  "Shaper": "FTD.CategoryShaper",
+  "Sniper": "FTD.CategorySniper",
+  "Soldier": "FTD.CategorySoldier"
+};

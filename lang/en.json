@@ -18,5 +18,30 @@
   "FTD.EffectEdit": "Edit Effect",
   "FTD.EffectDelete": "Delete Effect",
 
-  "FTD.Add": "Add"
+  "FTD.Add": "Add",
+  "FTD.Save": "Save",
+
+  "FTD.HitDice": "Hit Dice",
+  "FTD.HD": "HD",
+  "FTD.Category": "Category",
+
+  "FTD.CategoryBrute": "Brute",
+  "FTD.CategoryLeader": "Leader",
+  "FTD.CategoryPredator": "Predator",
+  "FTD.CategoryShaper": "Shaper",
+  "FTD.CategorySniper": "Sniper",
+  "FTD.CategorySoldier": "Soldier",
+
+  "FTD.Strong": "Strong",
+  "FTD.Weak": "Weak",
+
+  "FTD.EditNpcSkillsStrong": "Edit Strengths",
+  "FTD.EditNpcSkillsWeak": "Edit Weaknesses",
+  "FTD.WeakSkillsLabel": "Weaknesses",
+  "FTD.StrongSkillsLabel": "Streangths",
+  "FTD.SkillSeperateHint": "Seperate each unique skills with a semicolon (\"  ;  \")",
+  "FTD.SkillsDescLabel": "Text Description",
+
+  "FTD.Speed": "Speed (ft)"
+
 }

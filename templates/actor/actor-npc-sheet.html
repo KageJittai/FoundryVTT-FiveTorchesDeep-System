@@ -20,18 +20,18 @@
       </h1>
       <div class="resources grid grid-3col">
         <div class="resource flex-group-center">
-          <label for="data.hd" class="resource-label">Hit Dice</label>
+          <label for="data.hd" class="resource-label">{{localize "FTD.HitDice"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
             <select name="data.hd" value="{{data.hd}}" data-dtype="Number">
               {{#select data.hd}} {{#each hdList}}
-              <option value="{{value}}">{{text}} HD</option>
+              <option value="{{value}}">{{text}} {{localize "FTD.HD"}}</option>
               {{/each}} {{/select}}
             </select>
           </div>
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.category" class="resource-label">Category</label>
+          <label for="data.category" class="resource-label">{{localize "FTD.Category"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
             <select
               name="data.category"
@@ -39,14 +39,14 @@
               data-dtype="String"
             >
               {{#select data.category}} {{#each categoryList}}
-              <option value="{{this}}">[{{this}}]</option>
+              <option value="{{value}}">[{{text}}]</option>
               {{/each}} {{/select}}
             </select>
           </div>
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.speed" class="resource-label">Speed (ft)</label>
+          <label for="data.speed" class="resource-label">{{localize "FTD.Speed"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input
               type="text"
