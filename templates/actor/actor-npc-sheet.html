@@ -1,22 +1,10 @@
 <form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
   {{!-- Sheet Header --}}
   <header class="sheet-header">
-    <img
-      class="profile-img"
-      src="{{actor.img}}"
-      data-edit="img"
-      title="{{actor.name}}"
-      height="100"
-      width="100"
-    />
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
     <div class="header-fields">
       <h1 class="charname">
-        <input
-          name="name"
-          type="text"
-          value="{{actor.name}}"
-          placeholder="Name"
-        />
+        <input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
       </h1>
       <div class="resources grid grid-3col">
         <div class="resource flex-group-center">
@@ -33,29 +21,14 @@
         <div class="resource flex-group-center">
           <label for="data.category" class="resource-label">{{localize "FTD.Category"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-            <select
-              name="data.category"
-              value="{{data.category}}"
-              data-dtype="String"
-            >
+            <select name="data.category" value="{{data.category}}" data-dtype="String">
               {{#select data.category}} {{#each categoryList}}
-              <option value="{{value}}">[{{text}}]</option>
+              <option value="{{value}}">{{text}}</option>
               {{/each}} {{/select}}
             </select>
           </div>
         </div>
 
-        <div class="resource flex-group-center">
-          <label for="data.speed" class="resource-label">{{localize "FTD.Speed"}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input
-              type="text"
-              name="data.speed"
-              value="{{data.speed}}"
-              data-dtype="String"
-            />
-          </div>
-        </div>
       </div>
     </div>
   </header>
@@ -76,60 +49,71 @@
       <div class="grid grid-2col">
         <div class="npc-box flex-group">
           <h3>Combat</h3>
-          <div class="flexrow">
-            <label for="data.health.value" class="resource-label">HP</label>
-            <input
-              type="number"
-              name="data.health.value"
-              value="{{data.health.value}}"
-              data-dtype="Number"
-            />
-            <span> / </span>
-            <input
-              type="text"
-              name="data.health.max"
-              value="{{data.health.max}}"
-              data-dtype="Number"
-            />
+          <div class="grid grid-3col">
+            <label for="data.health.value" class="resource-label">HP <small>(avg. {{data.avghp}})</small></label>
+            <div class="flexrow grid-span-2">
+              <input type="number" name="data.health.value" value="{{data.health.value}}" data-dtype="Number" />
+              <span class="flexshrink resource-divider">&nbsp;/&nbsp;</span>
+              <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number" />
+            </div>
+
+            <label for="data.ac" class="resource-label">AC</label>
+            <input class="grid-span-2" type="number" name="data.ac" value="{{data.ac}}" data-dtype="Number" />
+
+            <label class="resource-label">Mods</label>
+            <div class="grid-span-2 flexrow" style="word-wrap: none;">
+              <a class="rollable align-center" data-roll="d20 + @weakmod" data-label="Weak">Weak ({{numberFormat data.mods.weak decimals=0 sign=true}})</a>
+              <span class="flexshrink resource-divider">&nbsp;/&nbsp;</span>
+              <a class="rollable align-center" data-roll="d20 + @normalmod" data-label="Base">Base ({{numberFormat data.mods.normal decimals=0 sign=true}})</a>
+              <span class="flexshrink resource-divider">&nbsp;/&nbsp;</span>
+              <a class="rollable align-center" data-roll="d20 + @strongmod" data-label="Strong">Strong ({{numberFormat data.mods.strong decimals=0 sign=true}})</a>
+            </div>
+
+
+            <label for="data.init" class="resource-label">Initiative</label>
+            <input class="grid-span-2" type="number" name="data.init" value="{{data.init}}" data-dtype="Number" />
+
+            <label for="data.speed" class="resource-label">{{localize "FTD.Speed"}}</label>
+            <input class="grid-span-2" type="number" name="data.speed" value="{{data.speed}}" data-dtype="Number" />
           </div>
+
         </div>
 
         <div class="npc-box">
           <div class="grid grid-2col">
-          <div>
-            <h2>
-              <a class="npc-skill-edit" title="{{localize "FTD.EditStrengths"}}" data-skill-set="strong">
-                {{localize "FTD.Strong"}} ({{data.mods.strong}})
+            <div>
+              <a class="npc-skill-edit" title="{{localize "FTD.EditNpcSkillsStrong" }}" data-skill-set="strong">
+                <i class="fas fa-edit"></i> <strong>{{localize "FTD.Strong"}}
+                  ({{numberFormat data.mods.strong decimals=0 sign=true}})</strong>
               </a>
-            </h2>
-            <ul class="skill-list">
-              {{#each strongList}}
-              <li class="rollable" data-roll="d20 + @strongmod" data-label="{{this}}">
-                <a >{{this}}</a>
-              </li>
-              {{/each}}
-            </ul>
-            <p>{{data.strongDesc}}</p>
-          </div>
+              <hr />
+              <ul class="skill-list">
+                {{#each strongList}}
+                <li>
+                  <a class="rollable" data-roll="d20 + @strongmod" data-label="{{this}}">{{this}}</a>
+                </li>
+                {{/each}}
+              </ul>
+              <p class="notes">{{data.strongDesc}}</p>
+            </div>
 
-          <div>
-            <h2>
-              <a class="npc-skill-edit" title="{{localize "FTD.EditWeaknesses"}}" data-skill-set="weak">
-                {{localize "FTD.Weak"}} ({{data.mods.weak}})
+            <div>
+              <a class="npc-skill-edit" title="{{localize "FTD.EditNpcSkillsWeak" }}" data-skill-set="weak">
+                <i class="fas fa-edit"></i> <strong>{{localize "FTD.Weak"}}
+                  ({{numberFormat data.mods.weak decimals=0 sign=true}})</strong>
               </a>
-            </h2>
-            <ul class="skill-list">
-              {{#each weakList}}
-              <li class="rollable" data-roll="d20 + @weakmod" data-label="{{this}}">
-                <a >{{this}}</a>
-              </li>
-              {{/each}}
-            </ul>
-            <p>{{data.weakDesc}}</p>
-          </div>
+              <hr />
+              <ul class="skill-list">
+                {{#each weakList}}
+                <li>
+                  <a class="rollable" data-roll="d20 + @weakmod" data-label="{{this}}">{{this}}</a>
+                </li>
+                {{/each}}
+              </ul>
+              <p class="notes">{{data.weakDesc}}</p>
+            </div>
           </div>
         </div>
-
 
         <div class="npc-box flex-group grid-span-2">
           {{> "systems/fivetorchesdeep/templates/actor/parts/actor-techniques.html" }}

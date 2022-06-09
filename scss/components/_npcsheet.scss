@@ -1,6 +1,11 @@
 .npc-box {
     border: 1px black solid;
     padding: 6px;
+
+    .resource-divider,
+    .resource-label {
+        margin: 4px 0px;
+    }
 }
 
 .prof-header {
