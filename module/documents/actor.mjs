@@ -79,6 +79,8 @@ export class ActorFTD extends Actor {
   getRollData() {
     const data = super.getRollData();
 
+    data['init'] = this.data.data.init;
+
     // Prepare character roll data.
     this._getCharacterRollData(data);
     this._getNpcRollData(data);
