@@ -49,6 +49,15 @@ export class ActorFTD extends Actor {
       // Calculate the modifier using d20 rules.
       ability.mod = Math.floor((ability.value - 10) / 2);
     }
+
+    // Set resource limits from ability scores
+    const r = system.resources;
+    const a = system.abilities;
+    r.supply.max = a.int.max + r.supply.bonus;
+    r.load.max = a.str.max + r.load.bonus;
+    r.resilience.max = a.con.max + r.resilience.bonus;
+    r.retainers.max = a.cha.max + r.retainers.bonus;
+    r.mItems.max = Math.max(1, a.cha.mod) + r.mItems.bonus;
   }
 
   /**
