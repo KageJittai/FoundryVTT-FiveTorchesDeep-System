@@ -22,29 +22,26 @@ export class ItemSheetFTD extends ItemSheet {
 
     // Alternatively, you could use the following return statement to do a
     // unique item sheet by type, like `weapon-sheet.html`.
-    return `${path}/item-${this.item.data.type}-sheet.html`;
+    return `${path}/item-${this.item.type}-sheet.html`;
   }
 
   /* -------------------------------------------- */
 
   /** @override */
   getData() {
-    // Retrieve base data structure.
     const context = super.getData();
 
     // Use a safe clone of the item data for further operations.
-    const itemData = context.item.data;
+    const item = foundry.utils.deepClone(context.item);
 
     // Retrieve the roll data for TinyMCE editors.
-    context.rollData = {};
-    let actor = this.object?.parent ?? null;
-    if (actor) {
-      context.rollData = actor.getRollData();
-    }
+    context.rollData = context.item.getRollData();
 
     // Add the actor's data to context.data for easier access, as well as flags.
-    context.data = itemData.data;
-    context.flags = itemData.flags;
+    context.system = item.system;
+    context.flags = item.flags;
+
+    context.richDesc = TextEditor.enrichHTML(context.system.description, {async: false, rollData: context.rollData });
 
     return context;
   }
