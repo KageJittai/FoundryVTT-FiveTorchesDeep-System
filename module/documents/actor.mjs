@@ -31,10 +31,13 @@ export class ActorFTD extends Actor {
   prepareDerivedData() {
     const flags = this.flags.ftd || {};
 
-    // Make separate methods for each Actor type (character, npc, etc.) to keep
-    // things organized.
+    try {
     this._prepareCharacterData();
     this._prepareNpcData();
+  }
+    catch (e) {
+      console.error(e);
+    }
   }
 
   /**
