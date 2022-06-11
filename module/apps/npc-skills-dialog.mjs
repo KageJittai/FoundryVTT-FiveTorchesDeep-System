@@ -3,11 +3,9 @@
  * @extends {Dialog}
  */
  export class NpcSkillsDialog extends Dialog {
-    constructor(actor, dialogData={}, options={}) {
+    constructor(dialogData={}, options={}) {
       super(dialogData, options);
       this.options.classes = ["fivetorchesdeep", "dialog"];
-
-      this.actor;
     }
 
     static async create(actor, skillSet) {
@@ -22,7 +20,7 @@
         const html = await renderTemplate("systems/fivetorchesdeep/templates/apps/npc-skills.html", viewData);
 
         return new Promise(resolve => {
-            const dlg = new this(actor, {
+            const dlg = new this({
                 title: `${actor.name}: ${game.i18n.localize("FTD.EditNpcSkills" + skillSet.capitalize())}`,
                 content: html,
                 buttons: {
