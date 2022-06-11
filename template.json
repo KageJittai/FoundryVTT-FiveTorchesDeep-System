@@ -7,7 +7,6 @@
         "init": 10,
         "health": {
           "value": 10,
-          "min": 0,
           "max": 10
         },
         "biography": ""
@@ -29,54 +28,52 @@
       "abilities": {
         "str": {
           "value": 10,
-          "damage": 0,
+          "max": 10,
           "prof": 0
         },
         "dex": {
           "value": 10,
-          "damage": 0,
+          "max": 10,
           "prof": 0
         },
         "con": {
           "value": 10,
-          "damage": 0,
+          "max": 10,
           "prof": 0
         },
         "int": {
           "value": 10,
-          "damage": 0,
+          "max": 10,
           "prof": 0
         },
         "wis": {
           "value": 10,
-          "damage": 0,
+          "max": 10,
           "prof": 0
         },
         "cha": {
           "value": 10,
-          "damage": 0,
+          "max": 10,
           "prof": 0
         }
       },
       "resources": {
         "supply": {
-          "value": 0,
-          "max": 10,
+          "value": 10,
           "bonus": 0
         },
         "load": {
-          "value": 0,
-          "max": 10,
+          "bonus": 0
+        },
+        "resilience": {
+          "value": 10,
           "bonus": 0
         },
         "retainers": {
           "value": 0,
-          "max": 10,
           "bonus": 0
         },
         "mItems": {
-          "value": 0,
-          "max": 1,
           "bonus": 0
         }
       },
