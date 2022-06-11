@@ -61,11 +61,11 @@
             <input class="grid-span-2" type="number" name="data.ac" value="{{data.ac}}" data-dtype="Number" />
 
             <label class="resource-label">Mods</label>
-            <div class="grid-span-2 flexrow" style="word-wrap: none;">
+            <div class="grid-span-2 flexrow resource-divider">
               <a class="rollable align-center" data-roll="d20 + @weakmod" data-label="Weak">Weak ({{numberFormat data.mods.weak decimals=0 sign=true}})</a>
-              <span class="flexshrink resource-divider">&nbsp;/&nbsp;</span>
+              <span class="flexshrink">&nbsp;/&nbsp;</span>
               <a class="rollable align-center" data-roll="d20 + @normalmod" data-label="Base">Base ({{numberFormat data.mods.normal decimals=0 sign=true}})</a>
-              <span class="flexshrink resource-divider">&nbsp;/&nbsp;</span>
+              <span class="flexshrink">&nbsp;/&nbsp;</span>
               <a class="rollable align-center" data-roll="d20 + @strongmod" data-label="Strong">Strong ({{numberFormat data.mods.strong decimals=0 sign=true}})</a>
             </div>
 
