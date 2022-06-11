@@ -8,10 +8,10 @@
       </h1>
       <div class="resources grid grid-3col">
         <div class="resource flex-group-center">
-          <label for="data.hd" class="resource-label">{{localize "FTD.HitDice"}}</label>
+          <label for="system.hd" class="resource-label">{{localize "FTD.HitDice"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-            <select name="data.hd" value="{{data.hd}}" data-dtype="Number">
-              {{#select data.hd}} {{#each hdList}}
+            <select name="system.hd" value="{{system.hd}}" data-dtype="Number">
+              {{#select system.hd}} {{#each hdList}}
               <option value="{{value}}">{{text}} {{localize "FTD.HD"}}</option>
               {{/each}} {{/select}}
             </select>
@@ -19,10 +19,10 @@
         </div>
 
         <div class="resource flex-group-center">
-          <label for="data.category" class="resource-label">{{localize "FTD.Category"}}</label>
+          <label for="system.category" class="resource-label">{{localize "FTD.Category"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-            <select name="data.category" value="{{data.category}}" data-dtype="String">
-              {{#select data.category}} {{#each categoryList}}
+            <select name="system.category" value="{{system.category}}" data-dtype="String">
+              {{#select system.category}} {{#each categoryList}}
               <option value="{{value}}">{{text}}</option>
               {{/each}} {{/select}}
             </select>
@@ -50,31 +50,31 @@
         <div class="npc-box flex-group">
           <h3>Combat</h3>
           <div class="grid grid-3col">
-            <label for="data.health.value" class="resource-label">HP <small>(avg. {{data.avghp}})</small></label>
+            <label for="system.health.value" class="resource-label">HP <small>(avg. {{system.avghp}})</small></label>
             <div class="flexrow grid-span-2">
-              <input type="number" name="data.health.value" value="{{data.health.value}}" data-dtype="Number" />
+              <input type="number" name="system.health.value" value="{{system.health.value}}" data-dtype="Number" />
               <span class="flexshrink resource-divider">&nbsp;/&nbsp;</span>
-              <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number" />
+              <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number" />
             </div>
 
-            <label for="data.ac" class="resource-label">AC</label>
-            <input class="grid-span-2" type="number" name="data.ac" value="{{data.ac}}" data-dtype="Number" />
+            <label for="system.ac" class="resource-label">AC</label>
+            <input class="grid-span-2" type="number" name="system.ac" value="{{system.ac}}" data-dtype="Number" />
 
             <label class="resource-label">Mods</label>
             <div class="grid-span-2 flexrow resource-divider">
-              <a class="rollable align-center" data-roll="d20 + @weakmod" data-label="Weak">Weak ({{numberFormat data.mods.weak decimals=0 sign=true}})</a>
+              <a class="rollable align-center" data-roll="d20 + @weakmod" data-label="Weak">Weak<br />({{numberFormat system.mods.weak decimals=0 sign=true}})</a>
               <span class="flexshrink">&nbsp;/&nbsp;</span>
-              <a class="rollable align-center" data-roll="d20 + @normalmod" data-label="Base">Base ({{numberFormat data.mods.normal decimals=0 sign=true}})</a>
+              <a class="rollable align-center" data-roll="d20 + @normalmod" data-label="Base">Base<br />({{numberFormat system.mods.normal decimals=0 sign=true}})</a>
               <span class="flexshrink">&nbsp;/&nbsp;</span>
-              <a class="rollable align-center" data-roll="d20 + @strongmod" data-label="Strong">Strong ({{numberFormat data.mods.strong decimals=0 sign=true}})</a>
+              <a class="rollable align-center" data-roll="d20 + @strongmod" data-label="Strong">Strong<br />({{numberFormat system.mods.strong decimals=0 sign=true}})</a>
             </div>
 
 
-            <label for="data.init" class="resource-label">Initiative</label>
-            <input class="grid-span-2" type="number" name="data.init" value="{{data.init}}" data-dtype="Number" />
+            <label for="system.init" class="resource-label">Initiative</label>
+            <input class="grid-span-2" type="number" name="system.init" value="{{system.init}}" data-dtype="Number" />
 
-            <label for="data.speed" class="resource-label">{{localize "FTD.Speed"}}</label>
-            <input class="grid-span-2" type="number" name="data.speed" value="{{data.speed}}" data-dtype="Number" />
+            <label for="system.speed" class="resource-label">{{localize "FTD.Speed"}}</label>
+            <input class="grid-span-2" type="number" name="system.speed" value="{{system.speed}}" data-dtype="Number" />
           </div>
 
         </div>
@@ -84,7 +84,7 @@
             <div>
               <a class="npc-skill-edit" title="{{localize "FTD.EditNpcSkillsStrong" }}" data-skill-set="strong">
                 <i class="fas fa-edit"></i> <strong>{{localize "FTD.Strong"}}
-                  ({{numberFormat data.mods.strong decimals=0 sign=true}})</strong>
+                  ({{numberFormat system.mods.strong decimals=0 sign=true}})</strong>
               </a>
               <hr />
               <ul class="skill-list">
@@ -94,13 +94,13 @@
                 </li>
                 {{/each}}
               </ul>
-              <p class="notes">{{data.strongDesc}}</p>
+              <p class="notes">{{system.strongDesc}}</p>
             </div>
 
             <div>
               <a class="npc-skill-edit" title="{{localize "FTD.EditNpcSkillsWeak" }}" data-skill-set="weak">
                 <i class="fas fa-edit"></i> <strong>{{localize "FTD.Weak"}}
-                  ({{numberFormat data.mods.weak decimals=0 sign=true}})</strong>
+                  ({{numberFormat system.mods.weak decimals=0 sign=true}})</strong>
               </a>
               <hr />
               <ul class="skill-list">
@@ -110,7 +110,7 @@
                 </li>
                 {{/each}}
               </ul>
-              <p class="notes">{{data.weakDesc}}</p>
+              <p class="notes">{{system.weakDesc}}</p>
             </div>
           </div>
         </div>
@@ -123,10 +123,7 @@
     </div>
     {{!-- Biography Tab --}}
     <div class="tab biography" data-group="primary" data-tab="description">
-      {{!-- If you want TinyMCE editors to output inline rolls when rendered,
-      you need to pass the actor's roll data to the rollData property. --}}
-      {{editor content=data.biography target="data.biography" rollData=rollData
-      button=true owner=owner editable=editable}}
+      {{editor richBiography target="system.biography" button=true owner=owner editable=editable}}
     </div>
 
     {{!-- Owned Items Tab --}}

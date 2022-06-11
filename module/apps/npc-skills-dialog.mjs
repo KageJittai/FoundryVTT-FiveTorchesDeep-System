@@ -13,13 +13,13 @@
     static async create(actor, skillSet) {
         if ( !actor.isOwner ) throw new Error("Unable to show skill dialog for unowned actors.");
 
-        const data = {
+        const viewData = {
             skillLabel: skillSet.capitalize(),
-            skills: actor.data.data[skillSet],
-            desc: actor.data.data[`${skillSet}Desc`]
+            skills: actor.system[skillSet],
+            desc: actor.system[`${skillSet}Desc`]
         };
 
-        const html = await renderTemplate("systems/fivetorchesdeep/templates/apps/npc-skills.html", data);
+        const html = await renderTemplate("systems/fivetorchesdeep/templates/apps/npc-skills.html", viewData);
 
         return new Promise(resolve => {
             const dlg = new this(actor, {
@@ -30,7 +30,7 @@
                         label: game.i18n.localize("FTD.Save"),
                         callback: html => {
                             const fd = new FormDataExtended(html[0].querySelector("form"));
-                            resolve(fd.toObject());
+                            resolve(fd.object);
                         }
                     }
                 },

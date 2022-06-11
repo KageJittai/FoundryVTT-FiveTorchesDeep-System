@@ -20,7 +20,7 @@ export class ActorSheetFTD extends ActorSheet {
 
   /** @override */
   get template() {
-    return `systems/fivetorchesdeep/templates/actor/actor-${this.actor.data.type}-sheet.html`;
+    return `systems/fivetorchesdeep/templates/actor/actor-${this.actor.type}-sheet.html`;
   }
 
   /* -------------------------------------------- */
@@ -29,25 +29,27 @@ export class ActorSheetFTD extends ActorSheet {
   getData() {
     const context = super.getData();
 
-    // Clone Actor data
-    const actorData = this.actor.data.toObject(false);
+    // Clone Actor
+    const actor = this.actor.toObject(false);
 
     // Add the actor's data to context.data for easier access, as well as flags.
-    context.data = actorData.data;
-    context.flags = actorData.flags;
-
-    // Prepare character data and items.
-    if (actorData.type == 'character') {
-      this._prepareItems(context);
-      this._prepareCharacterData(context);
-    }
-    else if (actorData.type == 'npc') {
-      this._prepareItems(context);
-      this._prepareNpcData(context);
-    }
+    context.system = actor.system;
+    context.flags = actor.flags;
 
     // Add roll data for TinyMCE editors.
     context.rollData = context.actor.getRollData();
+
+    context.richBiography = TextEditor.enrichHTML(actor.system.biography, {async: false, rollData: context.rollData });
+
+    // Prepare character data and items.
+    if (actor.type == 'character') {
+      this._prepareItems(context);
+      this._prepareCharacterData(context);
+    }
+    else if (actor.type == 'npc') {
+      this._prepareItems(context);
+      this._prepareNpcData(context);
+    }
 
     context.effects = prepareActiveEffectCategories(this.actor.effects);
 
@@ -56,10 +58,6 @@ export class ActorSheetFTD extends ActorSheet {
 
   /**
    * Organize and classify Items for Character sheets.
-   *
-   * @param {Object} actorData The actor to prepare.
-   *
-   * @return {undefined}
    */
   _prepareCharacterData(context) {
     // Handle ability scores.
@@ -82,18 +80,16 @@ export class ActorSheetFTD extends ActorSheet {
     }
 
     context.categoryList = [];
-    for (let [k, v] of Object.entries(CONFIG.FTD.Categories)) {
+    for (let [name, localizedName] of Object.entries(CONFIG.FTD.Categories)) {
       context.categoryList.push({
-        value: k,
-        text: game.i18n.localize(v)
+        value: name,
+        text: game.i18n.localize(localizedName)
       });
     }
 
     // Build proficency lists
-    context.strongList = this.actor.data.data
-        .strong.split(";").map(p => p.trim());
-    context.weakList = this.actor.data.data
-        .weak.split(";").map(p => p.trim());
+    context.strongList = this.actor.system.strong.split(";").map(p => p.trim());
+    context.weakList = this.actor.system.weak.split(";").map(p => p.trim());
   }
 
   /**
@@ -130,8 +126,8 @@ export class ActorSheetFTD extends ActorSheet {
       }
       // Append to spells.
       else if (i.type === 'spell') {
-        if (i.data.spellLevel != undefined) {
-          spells[i.data.spellLevel].push(i);
+        if (i.system.spellLevel != undefined) {
+          spells[i.system.spellLevel].push(i);
         }
       }
       // Append to techniques
@@ -140,7 +136,7 @@ export class ActorSheetFTD extends ActorSheet {
           _id: i._id,
           name: i.name,
           img: i.img,
-          description: TextEditor.enrichHTML(i.data.description)
+          richDesc: TextEditor.enrichHTML(i.system.description, {rollData: context.rollData, async: false})
         });
       }
     }
@@ -176,8 +172,8 @@ export class ActorSheetFTD extends ActorSheet {
 
       if (result) {
         let update = {};
-        update[`data.${skill}`] = result.skills;
-        update[`data.${skill}Desc`] = result.desc;
+        update[`system.${skill}`] = result.skills;
+        update[`system.${skill}Desc`] = result.desc;
 
         this.actor.update(update);
       }
@@ -215,7 +211,7 @@ export class ActorSheetFTD extends ActorSheet {
   _updateObject(event, update) {
     
     /*Object.keys(update).forEach(name => {
-      let compare = name.match(/data\.([a-zA-Z0-9]+)\[([0-9]+)\].?([a-zA-Z0-9]+)?/);
+      let compare = name.match(/system\.([a-zA-Z0-9]+)\[([0-9]+)\].?([a-zA-Z0-9]+)?/);
       if (compare) {
         // Remove the updated value from update
         const value = update[name];
@@ -226,15 +222,15 @@ export class ActorSheetFTD extends ActorSheet {
 
         if (compare[3]) {
           // We're updating an object key
-          this.actor.data.data[compare[1]][index][compare[3]] = value;
+          this.actor.system[compare[1]][index][compare[3]] = value;
         }
         else {
           // We're updating the entire object
-          this.actor.data.data[compare[1]][index] = value;
+          this.actor.system[compare[1]][index] = value;
         }
 
         // Assign new list to the update
-        update[`data.${compare[1]}`] = this.actor.data.data[compare[1]];
+        update[`system.${compare[1]}`] = this.actor.system[compare[1]];
       }
     });*/
 
