@@ -61,7 +61,7 @@ export class ActorSheetFTD extends ActorSheet {
    */
   _prepareCharacterData(context) {
     // Handle ability scores.
-    for (let [k, v] of Object.entries(context.data.abilities)) {
+    for (let [k, v] of Object.entries(context.system.abilities)) {
       v.label = game.i18n.localize(CONFIG.FTD.abilities[k]) ?? k;
     }
   }
@@ -248,21 +248,21 @@ export class ActorSheetFTD extends ActorSheet {
     // Get the type of item to create.
     const type = header.dataset.type;
     // Grab any data associated with this control.
-    const data = duplicate(header.dataset);
+    const tagData = duplicate(header.dataset);
     // Initialize a default name.
     const name = `New ${type.capitalize()}`;
     // Prepare the item object.
     const itemData = {
       name: name,
       type: type,
-      data: data
+      data: tagData
     };
     // Remove the type from the dataset since it's in the itemData.type prop.
     delete itemData.data["type"];
 
-    if (data.img) {
-      itemData.img = data.img;
-      delete data.img;
+    if (tagData.img) {
+      itemData.img = tagData.img;
+      delete tagData.img;
     }
 
     // Finally, create the item!
