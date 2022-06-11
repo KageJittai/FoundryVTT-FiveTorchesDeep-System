@@ -29,24 +29,22 @@ export class ActorFTD extends Actor {
    * is queried and has a roll executed directly from it).
    */
   prepareDerivedData() {
-    const actorData = this.data;
-    const data = actorData.data;
-    const flags = actorData.flags.ftd || {};
+    const flags = this.flags.ftd || {};
 
     // Make separate methods for each Actor type (character, npc, etc.) to keep
     // things organized.
-    this._prepareCharacterData(actorData);
-    this._prepareNpcData(actorData);
+    this._prepareCharacterData();
+    this._prepareNpcData();
   }
 
   /**
    * Prepare Character type specific data
    */
-  _prepareCharacterData(actorData) {
-    if (actorData.type !== 'character') return;
+  _prepareCharacterData() {
+    if (this.type !== 'character') return;
 
     // Make modifications to data here. For example:
-    const data = actorData.data;
+    const data = this.system;
 
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (let [key, ability] of Object.entries(data.abilities)) {
@@ -58,11 +56,11 @@ export class ActorFTD extends Actor {
   /**
    * Prepare NPC type specific data.
    */
-  _prepareNpcData(actorData) {
-    if (actorData.type !== 'npc') return;
+  _prepareNpcData() {
+    if (this.type !== 'npc') return;
 
     // Make modifications to data here. For example:
-    const data = actorData.data;
+    const data = this.system;
     const halfHd = Math.floor(data.hd / 2);
     data.mods = {
       "weak": Math.min(halfHd - 2, 8),
@@ -77,48 +75,48 @@ export class ActorFTD extends Actor {
    * Override getRollData() that's supplied to rolls.
    */
   getRollData() {
-    const data = super.getRollData();
+    const rollData = super.getRollData();
 
-    data['init'] = this.data.data.init;
+    rollData['init'] = this.system.init;
 
     // Prepare character roll data.
-    this._getCharacterRollData(data);
-    this._getNpcRollData(data);
+    this._getCharacterRollData(rollData);
+    this._getNpcRollData(rollData);
 
-    return data;
+    return rollData;
   }
 
   /**
    * Prepare character roll data.
    */
-  _getCharacterRollData(data) {
-    if (this.data.type !== 'character') return;
+  _getCharacterRollData(rollData) {
+    if (this.type !== 'character') return;
 
     // Copy the ability scores to the top level, so that rolls can use
     // formulas like `@str.mod + 4`.
-    if (data.abilities) {
-      for (let [k, v] of Object.entries(data.abilities)) {
-        data[k] = foundry.utils.deepClone(v);
+    if (rollData.abilities) {
+      for (let [k, v] of Object.entries(rollData.abilities)) {
+        rollData[k] = foundry.utils.deepClone(v);
       }
     }
 
     // Add level for easier access, or fall back to 0.
-    if (data.attributes.level) {
-      data.lvl = data.attributes.level.value ?? 0;
+    if (rollData.attributes.level) {
+      rollData.lvl = rollData.attributes.level.value ?? 0;
     }
   }
 
   /**
    * Prepare NPC roll data.
    */
-  _getNpcRollData(data) {
-    if (this.data.type !== 'npc') return;
+  _getNpcRollData(rollData) {
+    if (this.type !== 'npc') return;
 
     // Process additional NPC data here.
 
-    data.basemod = this.data.data.mods.normal;
-    data.weakmod = this.data.data.mods.weak;
-    data.strongmod = this.data.data.mods.strong;
+    rollData.basemod = this.system.mods.normal;
+    rollData.weakmod = this.system.mods.weak;
+    rollData.strongmod = this.system.mods.strong;
   }
 
 }
