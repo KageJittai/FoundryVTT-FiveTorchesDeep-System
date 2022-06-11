@@ -21,12 +21,7 @@ export class ActorFTD extends Actor {
 
   /**
    * @override
-   * Augment the basic actor data with additional dynamic data. Typically,
-   * you'll want to handle most of your calculated/derived data in this step.
-   * Data calculated in this step should generally not exist in template.json
-   * (such as ability modifiers rather than ability scores) and should be
-   * available both inside and outside of character sheets (such as if an actor
-   * is queried and has a roll executed directly from it).
+   * Augment the basic actor data with additional dynamic data.
    */
   prepareDerivedData() {
     const flags = this.flags.ftd || {};
@@ -47,10 +42,10 @@ export class ActorFTD extends Actor {
     if (this.type !== 'character') return;
 
     // Make modifications to data here. For example:
-    const data = this.system;
+    const system = this.system;
 
     // Loop through ability scores, and add their modifiers to our sheet output.
-    for (let [key, ability] of Object.entries(data.abilities)) {
+    for (let [key, ability] of Object.entries(system.abilities)) {
       // Calculate the modifier using d20 rules.
       ability.mod = Math.floor((ability.value - 10) / 2);
     }
@@ -63,15 +58,15 @@ export class ActorFTD extends Actor {
     if (this.type !== 'npc') return;
 
     // Make modifications to data here. For example:
-    const data = this.system;
-    const halfHd = Math.floor(data.hd / 2);
-    data.mods = {
+    const system = this.system;
+    const halfHd = Math.floor(system.hd / 2);
+    system.mods = {
       "weak": Math.min(halfHd - 2, 8),
       "normal": Math.min(halfHd + 2, 10),
-      "strong": Math.min(Math.floor(data.hd) + 2, 12)
+      "strong": Math.min(Math.floor(system.hd) + 2, 12)
     };
     
-    data.avghp = Math.ceil(data.hd * 4.5);
+    system.avghp = Math.ceil(system.hd * 4.5);
   }
 
   /**
@@ -114,7 +109,6 @@ export class ActorFTD extends Actor {
     if (this.type !== 'npc') return;
 
     // Process additional NPC data here.
-
     rollData.basemod = this.system.mods.normal;
     rollData.weakmod = this.system.mods.weak;
     rollData.strongmod = this.system.mods.strong;
