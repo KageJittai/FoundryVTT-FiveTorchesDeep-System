@@ -48,6 +48,8 @@ export class ActorFTD extends Actor {
     for (let [key, ability] of Object.entries(system.abilities)) {
       // Calculate the modifier using d20 rules.
       ability.mod = Math.floor((ability.value - 10) / 2);
+      // FTD caps ability mods
+      ability.mod = Math.max(-4, Math.min(ability.mod, 4));
     }
 
     // Set resource limits from ability scores
