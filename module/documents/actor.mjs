@@ -75,9 +75,7 @@ export class ActorFTD extends Actor {
    * Override getRollData() that's supplied to rolls.
    */
   getRollData() {
-    const rollData = super.getRollData();
-
-    rollData['init'] = this.system.init;
+    const rollData = foundry.utils.deepClone(super.getRollData());
 
     // Prepare character roll data.
     this._getCharacterRollData(rollData);
