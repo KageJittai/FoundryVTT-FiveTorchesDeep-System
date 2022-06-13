@@ -3,32 +3,28 @@
   <header class="sheet-header">
     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
     <div class="header-fields">
-      <h1 class="charname">
-        <input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
-      </h1>
-      <div class="resources grid grid-3col">
-        <div class="resource flex-group-center">
+      <div class="flexcol">
+        <div class="resource inline">
+          <label for="name" class="resource-label">Name</label>
+          <input class="resource-value" type="text" title="Character Name"
+            name="name" value="{{actor.name}}" data-dtype="String" />
+        </div>
+        <div class="resource inline">
           <label for="system.hd" class="resource-label">{{localize "FTD.HitDice"}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <select name="system.hd" value="{{system.hd}}" data-dtype="Number">
-              {{#select system.hd}} {{#each hdList}}
-              <option value="{{value}}">{{text}} {{localize "FTD.HD"}}</option>
-              {{/each}} {{/select}}
-            </select>
-          </div>
+          <select class="resource-value" name="system.hd" value="{{system.hd}}" data-dtype="Number">
+            {{#select system.hd}} {{#each hdList}}
+            <option value="{{value}}">{{text}} {{localize "FTD.HD"}}</option>
+            {{/each}} {{/select}}
+          </select>
         </div>
-
-        <div class="resource flex-group-center">
+        <div class="resource inline">
           <label for="system.category" class="resource-label">{{localize "FTD.Category"}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <select name="system.category" value="{{system.category}}" data-dtype="String">
-              {{#select system.category}} {{#each categoryList}}
-              <option value="{{value}}">{{text}}</option>
-              {{/each}} {{/select}}
-            </select>
-          </div>
+          <select class="resource-value" name="system.category" value="{{system.category}}" data-dtype="String">
+            {{#select system.category}} {{#each categoryList}}
+            <option value="{{value}}">{{text}}</option>
+            {{/each}} {{/select}}
+          </select>
         </div>
-
       </div>
     </div>
   </header>
@@ -49,34 +45,41 @@
       <div class="grid grid-2col">
         <div class="npc-box flex-group">
           <h3>Combat</h3>
-          <div class="grid grid-3col">
+          <div class="resource inline">
             <label for="system.health.value" class="resource-label">HP <small>(avg. {{system.avghp}})</small></label>
-            <div class="flexrow grid-span-2">
-              <input type="number" name="system.health.value" value="{{system.health.value}}" data-dtype="Number" />
-              <span class="flexshrink resource-divider">&nbsp;/&nbsp;</span>
-              <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number" />
+            <div class="resource-value multiple">
+              <input class="res-value" type="number" name="system.health.value" value="{{system.health.value}}" data-dtype="Number" />
+              <span class="sep">/</span>
+              <input class="res-max" type="number" name="system.health.max" value="{{system.health.max}}" data-dtype="Number" />
             </div>
-
+          </div>
+          <div class="resource inline">
             <label for="system.ac" class="resource-label">AC</label>
-            <input class="grid-span-2" type="number" name="system.ac" value="{{system.ac}}" data-dtype="Number" />
-
+            <div class="resource-value">
+              <input class="res-value" type="number" name="system.ac" value="{{system.ac}}" data-dtype="Number" />
+            </div>
+          </div>
+          <hr />
+          <div class="resource inline">
             <label class="resource-label">Mods</label>
-            <div class="grid-span-2 flexrow resource-divider">
+            <div class="resource-value multiple">
               <a class="rollable align-center" data-roll="d20 + @weakmod" data-label="Weak">Weak<br />({{numberFormat system.mods.weak decimals=0 sign=true}})</a>
-              <span class="flexshrink">&nbsp;/&nbsp;</span>
-              <a class="rollable align-center" data-roll="d20 + @normalmod" data-label="Base">Base<br />({{numberFormat system.mods.normal decimals=0 sign=true}})</a>
-              <span class="flexshrink">&nbsp;/&nbsp;</span>
+              <span class="sep">/</span>
+              <a class="rollable align-center" data-roll="d20 + @basemod" data-label="Base">Base<br />({{numberFormat system.mods.normal decimals=0 sign=true}})</a>
+              <span class="sep">/</span>
               <a class="rollable align-center" data-roll="d20 + @strongmod" data-label="Strong">Strong<br />({{numberFormat system.mods.strong decimals=0 sign=true}})</a>
             </div>
-
-
+          </div>
+          <hr />
+          <div class="resource inline">
             <label for="system.init" class="resource-label">Initiative</label>
-            <input class="grid-span-2" type="number" name="system.init" value="{{system.init}}" data-dtype="Number" />
-
-            <label for="system.speed" class="resource-label">{{localize "FTD.Speed"}}</label>
-            <input class="grid-span-2" type="number" name="system.speed" value="{{system.speed}}" data-dtype="Number" />
+            <input class="resource-value" type="number" name="system.init" value="{{system.init}}" data-dtype="Number" />
           </div>
 
+          <div class="resource inline">
+            <label for="system.speed" class="resource-label">{{localize "FTD.Speed"}}</label>
+            <input class="resource-value" type="number" name="system.speed" value="{{system.speed}}" data-dtype="Number" />
+          </div>
         </div>
 
         <div class="npc-box">
@@ -115,7 +118,7 @@
           </div>
         </div>
 
-        <div class="npc-box flex-group grid-span-2">
+        <div class="flex-group grid-span-2">
           {{> "systems/fivetorchesdeep/templates/actor/parts/actor-techniques.html" }}
         </div>
 

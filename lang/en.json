@@ -13,6 +13,12 @@
   "FTD.AbilityWisAbbr": "WIS",
   "FTD.AbilityChaAbbr": "CHA",
 
+  "FTD.Supply": "Supply",
+  "FTD.Load": "Load",
+  "FTD.Resilience": "Resilience",
+  "FTD.Retainers": "Retainers",
+  "FTD.MagicItems": "Magic Items",
+
   "FTD.EffectCreate": "Create Effect",
   "FTD.EffectToggle": "Toggle Effect",
   "FTD.EffectEdit": "Edit Effect",

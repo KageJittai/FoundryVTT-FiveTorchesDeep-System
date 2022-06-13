@@ -1,3 +1,94 @@
-.resource-label {
-  font-weight: bold;
+$resource-value-weight: 400;
+$resource-value-color: #72716d;
+
+.resource {
+  margin: 2px 5px;
+  align-items: left;
+
+  font-size: 1.1em;
+  line-height: 1.3em;
+
+  .resource-label {
+    overflow-x: hidden;
+    display: block;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  &.large {
+    font-size: 1.3em;
+  }
+
+  &.small {
+    font-size: 0.9em;
+  }
+
+  &.inline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .resource-label {
+      flex: 1;
+      text-align: left;
+    }
+
+    .resource-value {
+      flex: 2;
+    }
+    
+    /*input[type="number"] {
+    }*/
+    input[type="text"], select {
+      text-align: left;
+    }
+  }
+
+  input[type="number"], input[type="text"], select {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    padding: 0 10px;
+
+    text-align: center;
+    font-weight: $resource-value-weight;
+    color: $resource-value-color;
+  }
+
+  input[type="number"]:hover, input[type="text"]:hover {
+    border: 1px solid saddlebrown;
+  }
+
+  .resource-value {
+    color: $resource-value-color;
+    text-align: center;
+
+    &.multiple {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+
+      * {
+        flex: 1;
+      }
+
+      .res-value {
+        text-align: right;
+      }
+
+      .res-max {
+        text-align: left;
+      }
+
+      span.sep {
+        flex: none;
+        display: inline;
+        margin: 0px 1px;
+        position: relative;
+        font-weight: $resource-value-weight;
+        padding: 2px;
+      }
+    }
+  }
 }

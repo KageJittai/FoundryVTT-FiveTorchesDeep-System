@@ -69,6 +69,12 @@ export class ActorSheetFTD extends ActorSheet {
     for (let [k, v] of Object.entries(context.system.abilities)) {
       v.label = game.i18n.localize(CONFIG.FTD.abilities[k]) ?? k;
     }
+
+    // Handle resources.
+    for (let [k, v] of Object.entries(context.system.resources)) {
+      v.label = game.i18n.localize(CONFIG.FTD.resources[k].label) ?? k;
+      v.readonly = CONFIG.FTD.resources[k].readonly;
+    }
   }
 
   _prepareNpcData(context) {

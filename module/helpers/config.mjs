@@ -30,3 +30,29 @@ FTD.Categories = {
   "Sniper": "FTD.CategorySniper",
   "Soldier": "FTD.CategorySoldier"
 };
+
+FTD.resources = {
+  "supply": {
+    label: "FTD.Supply",
+    readonly: false
+  },
+  "load": {
+    label: "FTD.Load",
+    readonly: true
+  },
+  "resilience": {
+    label: "FTD.Resilience",
+    readonly: false
+  },
+  "retainers": {
+    label: "FTD.Retainers",
+    readonly: false
+  },
+  "mItems": {
+    label: "FTD.MagicItems",
+    readonly: true
+  }
+};
+
+FTD.SupplyPerLoad = 5;
+FTD.CoinPerLoad = 500;
