@@ -28,8 +28,6 @@ export class ActorSheetFTD extends ActorSheet {
     return `systems/fivetorchesdeep/templates/actor/actor-${this.actor.type}-sheet.html`;
   }
 
-  /* -------------------------------------------- */
-
   /** @override */
   getData() {
     const context = super.getData();
@@ -105,10 +103,6 @@ export class ActorSheetFTD extends ActorSheet {
 
   /**
    * Organize and classify Items for Character sheets.
-   *
-   * @param {Object} actorData The actor to prepare.
-   *
-   * @return {undefined}
    */
   _prepareItems(context) {
     // Initialize containers.
@@ -158,8 +152,6 @@ export class ActorSheetFTD extends ActorSheet {
     context.spells = spells;
     context.techniques = techniques;
   }
-
-  /* -------------------------------------------- */
 
   /** @override */
   activateListeners(html) {
@@ -216,36 +208,6 @@ export class ActorSheetFTD extends ActorSheet {
         li.addEventListener("dragstart", handler, false);
       });
     }
-  }
-
-  /** @override */
-  _updateObject(event, update) {
-    
-    /*Object.keys(update).forEach(name => {
-      let compare = name.match(/system\.([a-zA-Z0-9]+)\[([0-9]+)\].?([a-zA-Z0-9]+)?/);
-      if (compare) {
-        // Remove the updated value from update
-        const value = update[name];
-        delete update[name];
-
-        // Update the actor array
-        const index = parseInt(compare[2]);
-
-        if (compare[3]) {
-          // We're updating an object key
-          this.actor.system[compare[1]][index][compare[3]] = value;
-        }
-        else {
-          // We're updating the entire object
-          this.actor.system[compare[1]][index] = value;
-        }
-
-        // Assign new list to the update
-        update[`system.${compare[1]}`] = this.actor.system[compare[1]];
-      }
-    });*/
-
-    super._updateObject(event, update);
   }
 
   /**
