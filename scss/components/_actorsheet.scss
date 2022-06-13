@@ -1,11 +1,17 @@
+&.sheet.actor {
+    &.actor-character {
+        min-width: 500px;
+    }
+
+    &.actor-npc {
+        min-width: 500px;
+    }
+}
+
 .npc-box {
     border: 1px black solid;
     padding: 6px;
-
-    .resource-divider,
-    .resource-label {
-        margin: 4px 0px;
-    }
+    border-radius: 6px;
 }
 
 .prof-header {

@@ -6,6 +6,11 @@ import {NpcSkillsDialog} from "../apps/npc-skills-dialog.mjs"
  * @extends {ActorSheet}
  */
 export class ActorSheetFTD extends ActorSheet {
+  constructor(actor, options) {
+    super(actor, options);
+
+    this.options.classes.push(`actor-${actor.type}`);
+  }
 
   /** @override */
   static get defaultOptions() {
