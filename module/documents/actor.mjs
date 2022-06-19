@@ -55,14 +55,20 @@ export class ActorFTD extends Actor {
       ability.mod = Math.max(-4, Math.min(ability.mod, 4));
     }
 
+    const a = system.abilities;
+    system.init = a.dex.value
+
     // Set resource limits from ability scores
     const r = system.resources;
-    const a = system.abilities;
-    r.supply.max = a.int.max + r.supply.bonus;
-    r.load.max = a.str.max + r.load.bonus;
-    r.resilience.max = a.con.max + r.resilience.bonus;
-    r.retainers.max = a.cha.max + r.retainers.bonus;
+    r.supply.max = a.int.value + r.supply.bonus;
+    r.load.max = a.str.value + r.load.bonus;
+    r.resilience.max = a.con.value + r.resilience.bonus;
+    r.retainers.max = a.cha.value + r.retainers.bonus;
     r.mItems.max = Math.max(1, a.cha.mod) + r.mItems.bonus;
+
+    // Compute Load
+    r.mItems.value = 0;
+    r.load.value = r.supply.value / CONFIG.FTD.SupplyPerLoad;
   }
 
   /**
