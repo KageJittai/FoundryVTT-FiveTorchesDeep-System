@@ -1,0 +1,35 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </div>
+  </header>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    <div class="resource inline">
+        <label class="resource-label">Ability</label>
+        <input class="resource-value" type="text" name="system.ability" value="{{system.ability}}" data-dtype="String"/>
+    </div>
+
+    <div class="resource inline">
+        <label class="resource-label">Bonus</label>
+        <input class="resource-value" type="number" name="system.bonus" value="{{system.bonus}}" data-dtype="Number"/>
+    </div>
+
+    <div class="resource">
+        <label class="resource-label">
+          <input type="checkbox" name="system.doublePb" {{checked system.doublePb}} data-dtype="Boolean"/> Double Proficiency
+        </label>
+    </div>
+
+    <div class="resource">
+        <label class="resource-label">
+          <input type="checkbox" name="system.adv" {{checked system.adv}} data-dtype="Boolean"/> Advantage
+        </label>
+    </div>
+
+  </section>
+</form>

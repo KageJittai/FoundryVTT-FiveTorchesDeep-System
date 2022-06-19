@@ -117,6 +117,7 @@ export class ActorSheetFTD extends ActorSheet {
       5: []
     };
     const techniques = [];
+    const proficiencies = [];
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
@@ -144,6 +145,13 @@ export class ActorSheetFTD extends ActorSheet {
           richDesc: TextEditor.enrichHTML(i.system.description, {rollData: context.rollData, async: false})
         });
       }
+      else if (i.type === 'proficiency') {
+        proficiencies.push({
+          _id: i._id,
+          name: i.name,
+          img: i.img,
+        });
+      }
     }
 
     // Assign and return
@@ -151,6 +159,7 @@ export class ActorSheetFTD extends ActorSheet {
     context.features = features;
     context.spells = spells;
     context.techniques = techniques;
+    context.proficiencies = proficiencies;
   }
 
   /** @override */

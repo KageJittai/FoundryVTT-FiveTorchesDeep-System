@@ -76,15 +76,7 @@
         "mItems": {
           "bonus": 0
         }
-      },
-      "profs": [
-        {
-          "name": "proficient check",
-          "ability": "str",
-          "prof": 1,
-          "adv": false
-        }
-      ]
+      }
     },
     "npc": {
       "templates": ["base"],
@@ -103,11 +95,17 @@
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell", "technique"],
+    "types": ["proficiency", "item", "feature", "spell", "technique"],
     "templates": {
       "base": {
         "description": ""
       }
+    },
+    "proficiency": {
+      "ability": "str",
+      "bonus": 0,
+      "doublePb": false,
+      "adv": false
     },
     "item": {
       "templates": ["base"],
