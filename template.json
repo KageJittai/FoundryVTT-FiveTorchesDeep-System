@@ -5,9 +5,10 @@
       "base": {
         "ac": 10,
         "init": 10,
+        "speed": 30,
         "health": {
-          "value": 10,
-          "max": 10
+          "value": 5,
+          "max": 5
         },
         "biography": ""
       }
