@@ -27,9 +27,9 @@ export class ActorFTD extends Actor {
     const flags = this.flags.ftd || {};
 
     try {
-    this._prepareCharacterData();
-    this._prepareNpcData();
-  }
+      this._prepareCharacterData();
+      this._prepareNpcData();
+    }
     catch (e) {
       console.error(e);
     }
