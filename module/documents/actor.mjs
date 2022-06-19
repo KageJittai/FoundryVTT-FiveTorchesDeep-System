@@ -44,6 +44,9 @@ export class ActorFTD extends Actor {
     // Make modifications to data here. For example:
     const system = this.system;
 
+    // Proficency Bonus, this will match 5e's if level goes past 9
+    system.pb = Math.floor(2 + (0.25 * (system.attributes.level - 1)));
+
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (let [key, ability] of Object.entries(system.abilities)) {
       // Calculate the modifier using d20 rules.
@@ -111,6 +114,8 @@ export class ActorFTD extends Actor {
     if (rollData.attributes.level) {
       rollData.lvl = rollData.attributes.level.value ?? 0;
     }
+
+    rollData.pb = rollData.pb ?? 0;
   }
 
   /**
