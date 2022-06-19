@@ -4,6 +4,12 @@
  */
 export class ItemSheetFTD extends ItemSheet {
 
+  constructor(item, options) {
+    super(item, options);
+
+    this.options.classes.push(`item-${item.type}`);
+  }
+
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -16,13 +22,7 @@ export class ItemSheetFTD extends ItemSheet {
 
   /** @override */
   get template() {
-    const path = "systems/fivetorchesdeep/templates/item";
-    // Return a single sheet for all item types.
-    // return `${path}/item-sheet.html`;
-
-    // Alternatively, you could use the following return statement to do a
-    // unique item sheet by type, like `weapon-sheet.html`.
-    return `${path}/item-${this.item.type}-sheet.html`;
+    return `systems/fivetorchesdeep/templates/item/item-${this.item.type}-sheet.html`;
   }
 
   /* -------------------------------------------- */

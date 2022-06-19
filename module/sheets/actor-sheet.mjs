@@ -17,7 +17,7 @@ export class ActorSheetFTD extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["fivetorchesdeep", "sheet", "actor"],
       template: "systems/fivetorchesdeep/templates/actor/actor-sheet.html",
-      width: 600,
+      width: 550,
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
     });
