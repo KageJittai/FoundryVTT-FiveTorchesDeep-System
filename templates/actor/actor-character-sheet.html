@@ -2,14 +2,13 @@
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img"
-      title="{{actor.name}}" height="100" width="100" />
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
     <div class="header-fields">
       <div class="flexcol">
         <div class="resource inline">
           <label for="name" class="resource-label">Name</label>
-          <input class="resource-value" type="text" title="Character Name"
-            name="name" value="{{actor.name}}" data-dtype="String" />
+          <input class="resource-value" type="text" title="Character Name" name="name" value="{{actor.name}}"
+            data-dtype="String" />
         </div>
         <div class="resource inline">
           <label for="system.attributes.level.value" class="resource-label">Level</label>
@@ -18,9 +17,8 @@
         </div>
         <div class="resource inline">
           <label for="system.attributes.experience.value" class="resource-label">Exp</label>
-          <input class="resource-value" type="number" title="Experience"
-            name="system.attributes.experience.value" value="{{system.attributes.experience.value}}"
-            data-dtype="Number" />
+          <input class="resource-value" type="number" title="Experience" name="system.attributes.experience.value"
+            value="{{system.attributes.experience.value}}" data-dtype="Number" />
         </div>
       </div>
 
@@ -59,55 +57,72 @@
 
     {{!-- Owned Features Tab --}}
     <div class="tab features" data-group="primary" data-tab="features">
-      <section class="grid grid-3col">
-        <aside class="sidebar">
-
-          <div class="resource">
-            <label class="resource-label" for="system.health.value">Health</label>
-            <div class="resource-value multiple">
-              <input class="res-value" type="number" title="Current HP" name="system.health.value"
-                value="{{system.health.value}}" data-dtype="Number" />
-              <span class="sep"> / </span>
-              <input class="res-max" type="number" title="Max HP" name="system.health.max"
-                value="{{system.health.max}}" data-dtype="Number" />
-            </div>
-
-            <ul class="abilities flexcol">
-              {{#each system.abilities as |ability key|}}
-                <li class="ability flexrow flex-group-center">
-                  <label for="system.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left"
-                    data-roll="d20+@abilities.{{key}}.mod" data-label="{{ability.label}}">{{ability.label}}</label>
-                  <input type="number" name="system.abilities.{{key}}.value" value="{{ability.value}}"
+      <section class="grid grid-5col">
+        <section class="grid-span-5">
+            <div class="resources grid grid-4col grid-compressed">
+              <div class="resource box">
+                <label class="resource-label" for="system.health.value">Health</label>
+                <div class="resource-value multiple">
+                  <input class="res-value" type="number" title="Current HP" name="system.health.value"
+                    value="{{system.health.value}}" data-dtype="Number" />
+                  <span class="sep"> / </span>
+                  <input class="res-max" type="number" title="Max HP" name="system.health.max" value="{{system.health.max}}"
                     data-dtype="Number" />
-                  <input type="number" name="system.abilities.{{key}}.max" value="{{ability.max}}"
-                    data-dtype="Number" />
-                  <span class="ability-mod rollable" data-roll="d20+@abilities.{{key}}.mod"
-                    data-label="{{ability.label}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
-                </li>
-              {{/each}}
-            </ul>
-
-            <div class="resources grid grid-2col">
-              {{#each system.resources as |resource key|}}
-                <div class="resource-box">
-                  <div class="resource-body flex-group-center">
-                    <label for="system.resources.{{key}}.value" class="resource-label">{{resource.label}}</label>
-                    <hr />
-                    <div class="resource-content">
-                      <input type="number" name="system.resources.{{key}}.value" value="{{resource.value}}"
-                        data-dtype="Number" {{#if resource.readonly}} readonly{{/if}} />
-                      <div class="resource-max flexcol">
-                        <span class="max-text">{{resource.max}}</span>
-                        <label class="resource-label">Max</label>
-                      </div>
-                    </div>
-                  </div>
                 </div>
+              </div>
+
+              <div class="resource box">
+                <label class="resource-label" for="system.health.value">AC</label>
+                <input class="resource-value" type="number" title="Armor Class"
+                  name="system.ac" value="{{system.ac}}" data-dtype="Number" />
+              </div>
+
+              <div class="resource box">
+                <label class="resource-label" for="system.health.value">Initative</label>
+                <input class="resource-value" type="number" title="Initative"
+                  name="system.init" value="{{system.init}}" data-dtype="Number" readonly />
+              </div>
+
+              <div class="resource box">
+                <label class="resource-label" for="system.speed">Speed (ft)</label>
+                <input class="resource-value" type="number" title="Speed (ft)"
+                  name="system.speed" value="{{system.speed}}" data-dtype="Number" readonly />
+              </div>
+
+              {{#each system.resources as |resource key|}}
+              <div class="resource small box">
+                <label class="resource-label" for="system.resources.{{key}}.value">{{resource.label}}</label>
+                <div class="resource-value multiple flexrow">
+                  <input class="res-value" type="number" name="system.resources.{{key}}.value" value="{{resource.value}}"
+                    data-dtype="Number" {{#if resource.readonly}}readonly{{/if}} />
+                  <span class="sep">/</span>
+                  <input class="res-max" type="number" value="{{resource.max}}" readonly />
+                </div>
+              </div>
               {{/each}}
             </div>
+        </section>
+
+        <aside class="sidebar abilities flexcol">
+          {{#each system.abilities as |ability key|}}
+            <div class="ability resource box">
+              <label for="system.abilities.{{key}}.value" class="resource-label rollable"
+                data-roll="d20+@{{key}}.mod" data-label="{{ability.label}}">{{ability.label}}</label>
+              <input class="resource-value" type="number" name="system.abilities.{{key}}.value"
+                value="{{ability.value}}" data-dtype="Number" />
+              <!--input class="ability-max" type="number" name="system.abilities.{{key}}.max"
+                value="{{ability.max}}" data-dtype="Number" /-->
+              <div class="ability-mod rollable" data-roll="d20+@{{key}}.mod"
+                data-label="{{ability.label}}" style="text-align:center">{{numberFormat ability.mod decimals=0 sign=true}}</div>
+              <!--input class="ability-prof" type="number" name="system.abilities.{{key}}.prof"
+                value="{{ability.prof}}" data-dtype="Number" />
+              <span class="ability-mod rollable" data-roll="d20+@{{key}}.mod"
+                data-label="{{ability.label}}">{{numberFormat ability.mod decimals=0 sign=true}}</span-->
+            </div>
+          {{/each}}
         </aside>
 
-        <section class="main grid-span-2">
+        <section class="main grid-span-4">
           {{> "systems/fivetorchesdeep/templates/actor/parts/actor-proficiencies.html"}}
 
           {{> "systems/fivetorchesdeep/templates/actor/parts/actor-features.html"}}
