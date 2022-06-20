@@ -34,21 +34,6 @@
     {{!-- Owned Features Tab --}}
     <div class="tab features" data-group="primary" data-tab="features">
       <section class="grid grid-5col">
-        <section class="grid-span-5">
-            <div class="resources grid grid-4col grid-compressed">
-              {{ftd-resource-multi 'system.health' label="Health" box=true}}
-
-              {{ftd-resource 'system.ac' label='AC' box=true}}
-              {{ftd-resource 'system.init' label='Initative' box=true readonly=true}}
-              {{ftd-resource 'system.speed' label='Speed (ft)' box=true}}
-
-              {{ftd-resource-multi 'system.resources.supply' label="Supply" max_readonly=true box=true}}
-              {{ftd-resource-multi 'system.resources.load' label="Load" value_readonly=true max_readonly=true box=true}}
-              {{ftd-resource-multi 'system.resources.resilience' label="Resilience" max_readonly=true box=true}}
-              {{ftd-resource-multi 'system.resources.retainers' label="Retainers"  max_readonly=true box=true}}
-              {{ftd-resource-multi 'system.resources.mItems' label="Magic Items" value_readonly=true max_readonly=true box=true}}
-            </div>
-        </section>
 
         <aside class="sidebar abilities flexcol">
           {{#each system.abilities as |ability key|}}
@@ -70,6 +55,16 @@
         </aside>
 
         <section class="main grid-span-4">
+            <div class="resources grid grid-3col grid-compressed">
+              {{ftd-resource-multi 'system.health' label="Health" box=true}}
+              {{ftd-resource 'system.ac' label='AC' box=true}}
+              {{ftd-resource-multi 'system.resources.resilience' label="Resilience" max_readonly=true box=true}}
+
+              {{ftd-resource 'system.init' label='Initative' box=true readonly=true}}
+              {{ftd-resource 'system.pb' label='Proficiency Bonus' box=true readonly=true}}
+              {{ftd-resource 'system.speed' label='Speed (ft)' box=true}}
+            </div>
+
           {{> "systems/fivetorchesdeep/templates/actor/parts/actor-proficiencies.html"}}
 
           {{> "systems/fivetorchesdeep/templates/actor/parts/actor-features.html"}}
@@ -85,6 +80,12 @@
 
     {{!-- Owned Items Tab --}}
     <div class="tab items" data-group="primary" data-tab="items">
+      <div class="flexrow">
+        {{ftd-resource-multi 'system.resources.load' label="Load" value_readonly=true max_readonly=true box=true}}
+        {{ftd-resource-multi 'system.resources.supply' label="Supply" max_readonly=true box=true}}
+        {{ftd-resource-multi 'system.resources.retainers' label="Retainers"  max_readonly=true box=true}}
+        {{ftd-resource-multi 'system.resources.mItems' label="Magic Items" value_readonly=true max_readonly=true box=true}}
+      </div>
       {{> "systems/fivetorchesdeep/templates/actor/parts/actor-items.html"}}
     </div>
 
