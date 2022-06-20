@@ -45,7 +45,7 @@ export class ActorFTD extends Actor {
     const system = this.system;
 
     // Proficency Bonus, this will match 5e's if level goes past 9
-    system.pb = Math.floor(2 + (0.25 * (system.attributes.level - 1)));
+    system.pb = Math.floor(2 + (0.25 * (system.attributes.level.value - 1)));
 
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (let [key, ability] of Object.entries(system.abilities)) {
