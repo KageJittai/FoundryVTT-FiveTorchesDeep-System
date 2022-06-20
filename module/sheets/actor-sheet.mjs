@@ -106,7 +106,20 @@ export class ActorSheetFTD extends ActorSheet {
    */
   _prepareItems(context) {
     // Initialize containers.
-    const gear = [];
+    const inventory = {
+      gear: {
+        label: "Gear",
+        items: []
+      },
+      consumable: {
+        label: "Consumable",
+        items: []
+      },
+      loot: {
+        label: "Loot",
+        items: []
+      }
+    };
     const features = [];
     const spells = {
       0: [],
@@ -124,7 +137,7 @@ export class ActorSheetFTD extends ActorSheet {
       i.img = i.img || DEFAULT_TOKEN;
       // Append to gear.
       if (i.type === 'item') {
-        gear.push(i);
+        inventory[i.system.subtype].items.push(i);
       }
       // Append to features.
       else if (i.type === 'feature') {
@@ -150,12 +163,18 @@ export class ActorSheetFTD extends ActorSheet {
           _id: i._id,
           name: i.name,
           img: i.img,
+          ability: game.i18n.localize(CONFIG.FTD.abilityAbbreviations[i.system.ability]),
+          abilityName: game.i18n.localize(CONFIG.FTD.abilities[i.system.ability]),
+          mod: context.system.abilities[i.system.ability].mod
+                + context.system.pb
+                + (i.system.doublePb ? context.system.pb : 0)
+                + i.system.bonus
         });
       }
     }
 
     // Assign and return
-    context.gear = gear;
+    context.inventory = inventory;
     context.features = features;
     context.spells = spells;
     context.techniques = techniques;

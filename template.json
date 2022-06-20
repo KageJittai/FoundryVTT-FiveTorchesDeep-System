@@ -110,8 +110,10 @@
     },
     "item": {
       "templates": ["base"],
+      "subtype": "gear",
       "quantity": 1,
-      "weight": 0,
+      "load": 0,
+      "value": 0,
       "formula": "d20 + @str.mod + ceil(@lvl / 2)"
     },
     "feature": {
