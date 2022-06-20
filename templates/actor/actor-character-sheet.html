@@ -36,46 +36,17 @@
       <section class="grid grid-5col">
         <section class="grid-span-5">
             <div class="resources grid grid-4col grid-compressed">
-              <div class="resource box">
-                <label class="resource-label" for="system.health.value">Health</label>
-                <div class="resource-value multiple">
-                  <input class="res-value" type="number" title="Current HP" name="system.health.value"
-                    value="{{system.health.value}}" data-dtype="Number" />
-                  <span class="sep"> / </span>
-                  <input class="res-max" type="number" title="Max HP" name="system.health.max" value="{{system.health.max}}"
-                    data-dtype="Number" />
-                </div>
-              </div>
+              {{ftd-resource-multi 'system.health' label="Health" box=true}}
 
-              <div class="resource box">
-                <label class="resource-label" for="system.health.value">AC</label>
-                <input class="resource-value" type="number" title="Armor Class"
-                  name="system.ac" value="{{system.ac}}" data-dtype="Number" />
-              </div>
+              {{ftd-resource 'system.ac' label='AC' box=true}}
+              {{ftd-resource 'system.init' label='Initative' box=true readonly=true}}
+              {{ftd-resource 'system.speed' label='Speed (ft)' box=true}}
 
-              <div class="resource box">
-                <label class="resource-label" for="system.health.value">Initative</label>
-                <input class="resource-value" type="number" title="Initative"
-                  name="system.init" value="{{system.init}}" data-dtype="Number" readonly />
-              </div>
-
-              <div class="resource box">
-                <label class="resource-label" for="system.speed">Speed (ft)</label>
-                <input class="resource-value" type="number" title="Speed (ft)"
-                  name="system.speed" value="{{system.speed}}" data-dtype="Number" readonly />
-              </div>
-
-              {{#each system.resources as |resource key|}}
-              <div class="resource small box">
-                <label class="resource-label" for="system.resources.{{key}}.value">{{resource.label}}</label>
-                <div class="resource-value multiple flexrow">
-                  <input class="res-value" type="number" name="system.resources.{{key}}.value" value="{{resource.value}}"
-                    data-dtype="Number" {{#if resource.readonly}}readonly{{/if}} />
-                  <span class="sep">/</span>
-                  <input class="res-max" type="number" value="{{resource.max}}" readonly />
-                </div>
-              </div>
-              {{/each}}
+              {{ftd-resource-multi 'system.resources.supply' label="Supply" max_readonly=true box=true}}
+              {{ftd-resource-multi 'system.resources.load' label="Load" value_readonly=true max_readonly=true box=true}}
+              {{ftd-resource-multi 'system.resources.resilience' label="Resilience" max_readonly=true box=true}}
+              {{ftd-resource-multi 'system.resources.retainers' label="Retainers"  max_readonly=true box=true}}
+              {{ftd-resource-multi 'system.resources.mItems' label="Magic Items" value_readonly=true max_readonly=true box=true}}
             </div>
         </section>
 
