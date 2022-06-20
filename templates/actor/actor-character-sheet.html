@@ -5,39 +5,15 @@
     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
     <div class="header-fields">
       <div class="flexcol">
-        <div class="resource inline">
-          <label for="name" class="resource-label">Name</label>
-          <input class="resource-value" type="text" title="Character Name" name="name" value="{{actor.name}}"
-            data-dtype="String" />
-        </div>
-        <div class="resource inline">
-          <label for="system.attributes.level.value" class="resource-label">Level</label>
-          <input class="resource-value" type="number" title="Level" name="system.attributes.level.value"
-            value="{{system.attributes.level.value}}" data-dtype="Number" />
-        </div>
-        <div class="resource inline">
-          <label for="system.attributes.experience.value" class="resource-label">Exp</label>
-          <input class="resource-value" type="number" title="Experience" name="system.attributes.experience.value"
-            value="{{system.attributes.experience.value}}" data-dtype="Number" />
-        </div>
+        {{ftd-resource 'name' value=actor.name label='Name' inline=true}}
+        {{ftd-resource 'system.attributes.level.value' label='Level' inline=true}}
+        {{ftd-resource 'system.attributes.experience.value' label='Exp' inline=true}}
       </div>
 
       <div class="flexcol">
-        <div class="resource inline">
-          <label for="system.attributes.class" class="resource-label">Class</label>
-          <input class="resource-value" type="text" title="Class" name="system.attributes.class"
-            value="{{system.attributes.class}}" data-dtype="String" />
-        </div>
-        <div class="resource inline">
-          <label for="system.attributes.archetype" class="resource-label">Archetype</label>
-          <input class="resource-value" type="text" title="Archetype" name="system.attributes.archetype"
-            value="{{system.attributes.archetype}}" data-dtype="String" />
-        </div>
-        <div class="resource inline">
-          <label for="system.attributes.race" class="resource-label">Race</label>
-          <input class="resource-value" type="text" title="Race" name="system.attributes.race"
-            value="{{system.attributes.race}}" data-dtype="String" />
-        </div>
+        {{ftd-resource 'system.attributes.class' label='Class' inline=true}}
+        {{ftd-resource 'system.attributes.archetype' label='Archetype' inline=true}}
+        {{ftd-resource 'system.attributes.race' label='Race' inline=true}}
       </div>
     </div>
   </header>
