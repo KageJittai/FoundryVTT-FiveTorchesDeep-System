@@ -30,7 +30,8 @@
           {{/if}}
           {{#if (eq subname 'consumable')}}
             <button class="resupply" {{disabled item.system.resupply.noSupply}}>
-              +{{item.system.resupply.qty}} / -{{item.system.resupply.cost}} SUP
+              {{item.system.resupply.cost}} SUP
+              {{#if (gt item.system.resupply.qty 1)}}({{item.system.resupply.qty}}){{/if}}
             </button>
           {{/if}}
           {{#if (eq subname 'loot')}}
