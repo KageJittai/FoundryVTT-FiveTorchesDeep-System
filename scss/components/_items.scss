@@ -32,6 +32,10 @@
   scrollbar-width: thin;
   color: $c-tan;
 
+  button[disabled] {
+    color: rgba(16, 16, 16, 0.3)
+  }
+
   // Child lists
   .item-list {
     list-style: none;
