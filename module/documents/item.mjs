@@ -7,9 +7,41 @@ export class ItemFTD extends Item {
    * Augment the basic Item data model with additional dynamic data.
    */
   prepareData() {
-    // As with the actor class, items are documents that can have their data
-    // preparation methods overridden (such as prepareBaseData()).
     super.prepareData();
+  }
+
+  prepareDerivedData() {
+    super.prepareDerivedData();
+
+    if (this.type === "item") {
+      const qty = this.system.quantity;
+      const load = this.system.load;
+      let totalLoad = qty * load;
+      if (!Number.isNumeric(totalLoad)) {
+        totalLoad = 0;
+      }
+      this.system.totalLoad = totalLoad;
+
+      if (this.system.subtype === "consumable") {
+        let resupCost = this.system.supcost;
+        let resupQty = 1;
+
+        // If resupcost is less that one it
+        // means you can get multiple items per sup
+        if (resupCost < 1) {
+          resupQty = Math.round(1 / resupCost);
+          resupCost = 1;
+        }
+
+        let actorSupplyValue = this.actor?.system?.resources?.supply?.value ?? 0;
+
+        this.system.resupply = {
+          qty: resupQty,
+          cost: resupCost,
+          noSupply: resupCost > actorSupplyValue
+        }
+      }
+    }
   }
 
   /**

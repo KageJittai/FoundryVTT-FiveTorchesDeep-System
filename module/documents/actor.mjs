@@ -69,6 +69,15 @@ export class ActorFTD extends Actor {
     // Compute Load
     r.mItems.value = 0;
     r.load.value = r.supply.value / CONFIG.FTD.SupplyPerLoad;
+
+    this.items.forEach(i => {
+      if (i.type == "item") {
+        r.load.value += i.system.totalLoad;
+      }
+    });
+
+    // Clear out rounding errors
+    r.load.value = Math.round(r.load.value * 100) / 100;
   }
 
   /**
