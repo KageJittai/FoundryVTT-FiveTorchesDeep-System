@@ -238,6 +238,20 @@ export class ActorSheetFTD extends ActorSheet {
     }
   }
 
+  /** @override */
+  render(force, options) {
+    if (options.action == "update") {
+      let activeInputName = document.activeElement?.name;
+
+      if (activeInputName) {
+        Hooks.once("renderActorSheetFTD", () => {
+          this.element.find(`[name='${activeInputName}']`).select();
+        });
+      }
+    }
+    return super.render(force, options);
+  }
+
   /**
    * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
    * @param {Event} event   The originating click event
