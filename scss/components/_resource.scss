@@ -60,10 +60,14 @@ $resource-value-color: #72716d;
 
       .res-value {
         text-align: right;
+        padding-right: 3px;
+        padding-left: 0px;
       }
 
       .res-max {
         text-align: left;
+        padding-right: 0px;
+        padding-left: 3px;
       }
 
       span.sep {
@@ -98,7 +102,7 @@ $resource-value-color: #72716d;
     }
 
     .resource-value.multiple {
-      padding: 0px 15px;
+      padding: 0px 4px;
     }
   }
 
