@@ -217,8 +217,21 @@ export class ActorSheetFTD extends ActorSheet {
     html.find('.item-delete').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
-      item.delete();
-      li.slideUp(200, () => this.render(false));
+      li.slideUp(200, () => item.delete());
+    });
+
+    // Execute resupply
+    html.find('.resupply').click(async ev => {
+      if (ev.currentTarget.disabled) return;
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+
+      const resupply = item.system.resupply;
+      const sup = parseInt(this.actor.system.resources.supply.value);
+      const qty = parseInt(item.system.quantity);
+
+      this.actor.update({ "system.resources.supply.value": sup - resupply.cost });
+      item.update({ "system.quantity": qty + resupply.qty });
     });
 
     // Active Effect management
@@ -239,7 +252,7 @@ export class ActorSheetFTD extends ActorSheet {
   }
 
   /** @override */
-  render(force, options) {
+  render(force=false, options={}) {
     if (options.action == "update") {
       let activeInputName = document.activeElement?.name;
 
