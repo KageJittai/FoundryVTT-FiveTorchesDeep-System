@@ -5,7 +5,7 @@ export function getSystemSettings(settingName) {
 }
 
 export function registerSystemSettings() {
-    game.settings.register(ftdName, "itemLoadRounding", {
+    game.settings.register(FtdName, "itemLoadRounding", {
         scope: "world",
         config: true,
 
@@ -22,7 +22,7 @@ export function registerSystemSettings() {
         }
     });
 
-    game.settings.register(ftdName, "supplyLoadRounding", {
+    game.settings.register(FtdName, "supplyLoadRounding", {
         scope: "world",
         config: true,
 

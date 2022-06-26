@@ -17,6 +17,9 @@ import { FTD } from "./helpers/config.mjs";
 
 Hooks.once('init', async function() {
 
+  // This needs to be done before any settings are accessed.
+  registerSystemSettings();
+
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
   game.fivetorchesdeep = {
@@ -47,8 +50,6 @@ Hooks.once('init', async function() {
   Actors.registerSheet("fivetorchesdeep", ActorSheetFTD, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("fivetorchesdeep", ItemSheetFTD, { makeDefault: true });
-
-  registerSystemSettings();
 
   // FTD custom helpers
   loadCustomHandlebarHelpers();
