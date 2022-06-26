@@ -1,3 +1,5 @@
+import {roundItemLoad} from "../helpers/system-math.mjs"
+
 /**
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
@@ -13,17 +15,12 @@ export class ItemFTD extends Item {
   prepareDerivedData() {
     super.prepareDerivedData();
 
+    let system = this.system;
     if (this.type === "item") {
-      const qty = this.system.quantity;
-      const load = this.system.load;
-      let totalLoad = qty * load;
-      if (!Number.isNumeric(totalLoad)) {
-        totalLoad = 0;
-      }
-      this.system.totalLoad = totalLoad;
+      system.totalLoad = roundItemLoad(system.quantity * system.load);
 
-      if (this.system.subtype === "consumable") {
-        let resupCost = this.system.supcost;
+      if (system.subtype === "consumable") {
+        let resupCost = system.supcost;
         let resupQty = 1;
 
         // If resupcost is less that one it
@@ -35,7 +32,7 @@ export class ItemFTD extends Item {
 
         let actorSupplyValue = this.actor?.system?.resources?.supply?.value ?? 0;
 
-        this.system.resupply = {
+        system.resupply = {
           qty: resupQty,
           cost: resupCost,
           noSupply: resupCost > actorSupplyValue

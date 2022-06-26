@@ -1,3 +1,5 @@
+import {roundSupplyLoad} from "../helpers/system-math.mjs"
+
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
@@ -68,7 +70,7 @@ export class ActorFTD extends Actor {
 
     // Compute Load
     r.mItems.value = 0;
-    r.load.value = r.supply.value / CONFIG.FTD.SupplyPerLoad;
+    r.load.value = roundSupplyLoad(r.supply.value / CONFIG.FTD.SupplyPerLoad);
 
     this.items.forEach(i => {
       if (i.type == "item") {
