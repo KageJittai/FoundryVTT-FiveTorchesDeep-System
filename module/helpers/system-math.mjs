@@ -22,3 +22,15 @@ export function roundSupplyLoad(value) {
     const roundingMethod = getSystemSettings("supplyLoadRounding");
     return RoundingMethods[roundingMethod](value);
 }
+
+// Proficency Bonus, this will match 5e's if level goes past 9
+export function calculateProficencyBonus(characterLevel) {
+    return Math.floor(2 + (0.25 * (characterLevel - 1)));
+}
+
+export function calculateAbilityMod(abilityScore) {
+    // Calculate the modifier using d20 rules.
+    let mod = Math.floor((abilityScore - 10) / 2);
+    // FTD caps ability mods
+    return Math.max(-4, Math.min(mod, 4));
+}

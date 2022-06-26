@@ -1,4 +1,4 @@
-import {roundSupplyLoad} from "../helpers/system-math.mjs"
+import {roundSupplyLoad, calculateProficencyBonus, calculateAbilityMod} from "../helpers/system-math.mjs"
 
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
@@ -46,15 +46,11 @@ export class ActorFTD extends Actor {
     // Make modifications to data here. For example:
     const system = this.system;
 
-    // Proficency Bonus, this will match 5e's if level goes past 9
-    system.pb = Math.floor(2 + (0.25 * (system.attributes.level.value - 1)));
+    system.pb = calculateProficencyBonus(system.attributes.level.value);
 
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (let [key, ability] of Object.entries(system.abilities)) {
-      // Calculate the modifier using d20 rules.
-      ability.mod = Math.floor((ability.value - 10) / 2);
-      // FTD caps ability mods
-      ability.mod = Math.max(-4, Math.min(ability.mod, 4));
+      ability.mod = calculateAbilityMod(ability.value);
     }
 
     const a = system.abilities;
@@ -77,9 +73,6 @@ export class ActorFTD extends Actor {
         r.load.value += i.system.totalLoad;
       }
     });
-
-    // Clear out rounding errors
-    r.load.value = Math.round(r.load.value * 100) / 100;
   }
 
   /**
