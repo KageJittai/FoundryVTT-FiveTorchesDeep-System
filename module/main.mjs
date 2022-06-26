@@ -7,7 +7,8 @@ import { ItemSheetFTD } from "./sheets/item-sheet.mjs";
 import { NpcSkillsDialog } from "./apps/npc-skills-dialog.mjs"
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
-import { loadCustomHandlebarHelpers } from "./helpers/handlebar-helpers.mjs";
+import { loadCustomHandlebarHelpers } from "./helpers/ftd-handlebars.mjs";
+import { registerSystemSettings } from "./helpers/settings.mjs";
 import { FTD } from "./helpers/config.mjs";
 
 /* -------------------------------------------- */
@@ -46,6 +47,8 @@ Hooks.once('init', async function() {
   Actors.registerSheet("fivetorchesdeep", ActorSheetFTD, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("fivetorchesdeep", ItemSheetFTD, { makeDefault: true });
+
+  registerSystemSettings();
 
   // FTD custom helpers
   loadCustomHandlebarHelpers();

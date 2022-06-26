@@ -48,6 +48,18 @@
   "FTD.SkillSeperateHint": "Seperate each unique skills with a semicolon (\"  ;  \")",
   "FTD.SkillsDescLabel": "Text Description",
 
-  "FTD.Speed": "Speed (ft)"
+  "FTD.Speed": "Speed (ft)",
+
+  "SETTINGS": {
+    "FTD": {
+      "ItemLoadRounding": "Item Load Rounding",
+      "ItemLoadRoundingHint": "When computing a character's total load, this is how to handle rounding of multiple items of the same type.",
+
+      "RoundNearest": "Round to Nearest",
+      "RoundDown": "Always Round Down",
+      "RoundUp": "Always Round Up",
+      "NoRounding": "Track Fractional Values"
+    }
+  }
 
 }
