@@ -7,7 +7,7 @@ import { ItemSheetFTD } from "./sheets/item-sheet.mjs";
 import { NpcSkillsDialog } from "./apps/npc-skills-dialog.mjs"
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
-import { loadCustomHandlebarHelpers } from "./helpers/ftd-handlebars.mjs";
+import { loadCustomHandlebarHelpers } from "./helpers/handlebar-helpers.mjs";
 import { registerSystemSettings } from "./helpers/settings.mjs";
 import { FTD } from "./helpers/config.mjs";
 
