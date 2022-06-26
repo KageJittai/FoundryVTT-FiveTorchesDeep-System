@@ -53,7 +53,10 @@
   "SETTINGS": {
     "FTD": {
       "ItemLoadRounding": "Item Load Rounding",
-      "ItemLoadRoundingHint": "When computing a character's total load, this is how to handle rounding of multiple items of the same type.",
+      "ItemLoadRoundingHint": "How to handle rounding load of multiple items of the same type.",
+
+      "SupplyLoadRounding": "Supply Load Rounding",
+      "SupplyLoadRoundingHint": "How to handle rounding load of supplies.",
 
       "RoundNearest": "Round to Nearest",
       "RoundDown": "Always Round Down",
