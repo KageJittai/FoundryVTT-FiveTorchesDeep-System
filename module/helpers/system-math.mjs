@@ -34,3 +34,12 @@ export function calculateAbilityMod(abilityScore) {
     // FTD caps ability mods
     return Math.max(-4, Math.min(mod, 4));
 }
+
+export function calculateNpcMods(hitdice) {
+    const halfHd = Math.floor(hitdice / 2);
+    system.mods = {
+      "weak": Math.min(halfHd - 2, 8),
+      "normal": Math.min(halfHd + 2, 10),
+      "strong": Math.min(Math.floor(hitdice) + 2, 12)
+    };
+}

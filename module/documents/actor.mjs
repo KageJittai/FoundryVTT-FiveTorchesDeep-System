@@ -1,4 +1,4 @@
-import {roundSupplyLoad, calculateProficencyBonus, calculateAbilityMod} from "../helpers/system-math.mjs"
+import {roundSupplyLoad, calculateProficencyBonus, calculateAbilityMod, calculateNpcMods} from "../helpers/system-math.mjs"
 
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
@@ -83,13 +83,7 @@ export class ActorFTD extends Actor {
 
     // Make modifications to data here. For example:
     const system = this.system;
-    const halfHd = Math.floor(system.hd / 2);
-    system.mods = {
-      "weak": Math.min(halfHd - 2, 8),
-      "normal": Math.min(halfHd + 2, 10),
-      "strong": Math.min(Math.floor(system.hd) + 2, 12)
-    };
-    
+    system.mods = calculateNpcMods(system.hd)
     system.avghp = Math.ceil(system.hd * 4.5);
   }
 
