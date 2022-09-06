@@ -1,7 +1,7 @@
 {
   "name": "fivetorchesdeep",
-  "version": "1.0.0",
-  "description": "CSS compiler for the Five Torches Deep system",
+  "version": "0.0.1",
+  "description": "Five Torches Deep system",
   "scripts": {
     "build": "gulp build",
     "compile": "gulp css",
@@ -11,7 +11,7 @@
   "browserslist": [
     "last 3 versions"
   ],
-  "author": "John Doe",
+  "author": "Kage",
   "license": "MIT",
   "private": true,
   "dependencies": {
