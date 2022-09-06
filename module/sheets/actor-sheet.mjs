@@ -230,8 +230,15 @@ export class ActorSheetFTD extends ActorSheet {
       const sup = parseInt(this.actor.system.resources.supply.value);
       const qty = parseInt(item.system.quantity);
 
-      this.actor.update({ "system.resources.supply.value": sup - resupply.cost });
-      item.update({ "system.quantity": qty + resupply.qty });
+      await this.actor.update({ "system.resources.supply.value": sup - resupply.cost }, {render: false});
+      await item.update({ "system.quantity": qty + resupply.qty });
+    });
+
+    html.find(".expandable").click(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+
+
     });
 
     // Active Effect management
