@@ -37,7 +37,7 @@ export function calculateAbilityMod(abilityScore) {
 
 export function calculateNpcMods(hitdice) {
     const halfHd = Math.floor(hitdice / 2);
-    system.mods = {
+    return {
       "weak": Math.min(halfHd - 2, 8),
       "normal": Math.min(halfHd + 2, 10),
       "strong": Math.min(Math.floor(hitdice) + 2, 12)

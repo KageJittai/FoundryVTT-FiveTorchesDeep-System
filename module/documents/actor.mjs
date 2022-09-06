@@ -128,10 +128,12 @@ export class ActorFTD extends Actor {
   _getNpcRollData(rollData) {
     if (this.type !== 'npc') return;
 
+    let mods = calculateNpcMods(this.system.hd)
+
     // Process additional NPC data here.
-    rollData.basemod = this.system.mods.normal;
-    rollData.weakmod = this.system.mods.weak;
-    rollData.strongmod = this.system.mods.strong;
+    rollData.basemod = mods.normal;
+    rollData.weakmod = mods.weak;
+    rollData.strongmod = mods.strong;
   }
 
 }
