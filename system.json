@@ -21,7 +21,7 @@
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
   "url": "https://github.com/KageJittai/FoundryVTT-FiveTorchesDeep-System",
-  "manifest": "https://raw.githubusercontent.com/KageJittai/FoundryVTT-FiveTorchesDeep-System/main/module.json",
+  "manifest": "https://raw.githubusercontent.com/KageJittai/FoundryVTT-FiveTorchesDeep-System/main/system.json",
   "download": "https://github.com/KageJittai/FoundryVTT-FiveTorchesDeep-System/archive/main.zip",
   "license": "LICENSE.txt"
 }
