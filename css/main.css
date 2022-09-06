@@ -1,0 +1,693 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+/* Global styles */
+.window-app {
+  font-family: "Roboto", sans-serif;
+}
+
+.rollable:hover, .rollable:focus {
+  color: #000;
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}
+
+.grid,
+.grid-2col {
+  display: grid;
+  grid-column: span 2 / span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.grid-3col {
+  grid-column: span 3 / span 3;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4col {
+  grid-column: span 4 / span 4;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-5col {
+  grid-column: span 5 / span 5;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-6col {
+  grid-column: span 6 / span 6;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.grid-7col {
+  grid-column: span 7 / span 7;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.grid-8col {
+  grid-column: span 8 / span 8;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.grid-9col {
+  grid-column: span 9 / span 9;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+.grid-10col {
+  grid-column: span 10 / span 10;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+
+.grid-11col {
+  grid-column: span 11 / span 11;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+}
+
+.grid-12col {
+  grid-column: span 12 / span 12;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.grid-start-2 {
+  grid-column-start: 2;
+}
+
+.grid-start-3 {
+  grid-column-start: 3;
+}
+
+.grid-start-4 {
+  grid-column-start: 4;
+}
+
+.grid-start-5 {
+  grid-column-start: 5;
+}
+
+.grid-start-6 {
+  grid-column-start: 6;
+}
+
+.grid-start-7 {
+  grid-column-start: 7;
+}
+
+.grid-start-8 {
+  grid-column-start: 8;
+}
+
+.grid-start-9 {
+  grid-column-start: 9;
+}
+
+.grid-start-10 {
+  grid-column-start: 10;
+}
+
+.grid-start-11 {
+  grid-column-start: 11;
+}
+
+.grid-start-12 {
+  grid-column-start: 12;
+}
+
+.grid-span-2 {
+  grid-column-end: span 2;
+}
+
+.grid-span-3 {
+  grid-column-end: span 3;
+}
+
+.grid-span-4 {
+  grid-column-end: span 4;
+}
+
+.grid-span-5 {
+  grid-column-end: span 5;
+}
+
+.grid-span-6 {
+  grid-column-end: span 6;
+}
+
+.grid-span-7 {
+  grid-column-end: span 7;
+}
+
+.grid-span-8 {
+  grid-column-end: span 8;
+}
+
+.grid-span-9 {
+  grid-column-end: span 9;
+}
+
+.grid-span-10 {
+  grid-column-end: span 10;
+}
+
+.grid-span-11 {
+  grid-column-end: span 11;
+}
+
+.grid-span-12 {
+  grid-column-end: span 12;
+}
+
+.grid-compressed {
+  gap: 2px;
+}
+
+.flex-group-center,
+.flex-group-left,
+.flex-group-right {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.flex-group-left {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.flex-group-right {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.flexshrink {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+}
+
+.flex-between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.flexlarge {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+}
+
+.align-left {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.align-right {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.align-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Styles limited to five torches deep sheets */
+.fivetorchesdeep {
+  /* ----------------------------------------- */
+  /*  Items Lists                              */
+  /* ----------------------------------------- */
+  /* Example style for this module (can be removed if not needed) */
+}
+
+.fivetorchesdeep .item-form {
+  font-family: "Roboto", sans-serif;
+}
+
+.fivetorchesdeep .sheet-header {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.fivetorchesdeep .sheet-header .profile-img {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100px;
+  flex: 0 0 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.fivetorchesdeep .sheet-header .header-fields {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.fivetorchesdeep .sheet-header .header-fields * {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.fivetorchesdeep .sheet-tabs {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+}
+
+.fivetorchesdeep .sheet-body,
+.fivetorchesdeep .sheet-body .tab,
+.fivetorchesdeep .sheet-body .tab .editor {
+  height: 100%;
+}
+
+.fivetorchesdeep .tox .tox-editor-container {
+  background: #fff;
+}
+
+.fivetorchesdeep .tox .tox-edit-area {
+  padding: 0 8px;
+}
+
+.fivetorchesdeep .resource {
+  margin: 2px;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  font-size: 1.1em;
+  line-height: 1.3em;
+  /**
+   * Resource Box Form
+   */
+  /**
+   * Inline Resource Form
+   */
+}
+
+.fivetorchesdeep .resource .resource-label {
+  overflow-x: hidden;
+  display: block;
+  font-weight: 500;
+  text-align: left;
+}
+
+.fivetorchesdeep .resource.large {
+  font-size: 1.3em;
+}
+
+.fivetorchesdeep .resource.small {
+  font-size: 0.9em;
+}
+
+.fivetorchesdeep .resource input[type="number"], .fivetorchesdeep .resource input[type="text"], .fivetorchesdeep .resource select {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 10px;
+  text-align: center;
+  font-weight: 400;
+  color: #72716d;
+}
+
+.fivetorchesdeep .resource input[type="number"]:hover, .fivetorchesdeep .resource input[type="text"]:hover {
+  border: 1px solid saddlebrown;
+}
+
+.fivetorchesdeep .resource input[type="number"][readonly],
+.fivetorchesdeep .resource input[type="number"][readonly]:focus {
+  background-color: transparent;
+  border: 1px solid transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.fivetorchesdeep .resource .resource-value {
+  color: #72716d;
+  text-align: center;
+}
+
+.fivetorchesdeep .resource .resource-value.multiple {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.fivetorchesdeep .resource .resource-value.multiple * {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.fivetorchesdeep .resource .resource-value.multiple .res-value {
+  text-align: right;
+  padding-right: 3px;
+  padding-left: 0px;
+}
+
+.fivetorchesdeep .resource .resource-value.multiple .res-max {
+  text-align: left;
+  padding-right: 0px;
+  padding-left: 3px;
+}
+
+.fivetorchesdeep .resource .resource-value.multiple span.sep {
+  -webkit-box-flex: 0;
+  -ms-flex: none;
+  flex: none;
+  display: inline;
+  margin: 0px 1px;
+  position: relative;
+  font-weight: 400;
+  padding: 2px;
+}
+
+.fivetorchesdeep .resource.box {
+  border: 1px rgba(0, 0, 0, 0.3) solid;
+  border-radius: 2px;
+  padding: 3px;
+}
+
+.fivetorchesdeep .resource.box .resource-label {
+  text-align: center;
+  border-bottom: 1px dotted var(--color-border-light-tertiary);
+  margin-bottom: 3px;
+  padding-bottom: 1px;
+}
+
+.fivetorchesdeep .resource.box input.resource-value {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.fivetorchesdeep .resource.box .resource-value.multiple {
+  padding: 0px 4px;
+}
+
+.fivetorchesdeep .resource.inline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.fivetorchesdeep .resource.inline .resource-label {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: left;
+}
+
+.fivetorchesdeep .resource.inline .resource-value {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+}
+
+.fivetorchesdeep .resource.inline input[type="text"], .fivetorchesdeep .resource.inline select {
+  text-align: left;
+}
+
+.fivetorchesdeep .items-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove #eeede0;
+  font-weight: bold;
+}
+
+.fivetorchesdeep .items-header > * {
+  font-size: 14px;
+  text-align: center;
+}
+
+.fivetorchesdeep .items-header .item-name {
+  font-weight: bold;
+  padding-left: 5px;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.fivetorchesdeep .items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  color: #444;
+}
+
+.fivetorchesdeep .items-list button[disabled] {
+  color: rgba(16, 16, 16, 0.3);
+}
+
+.fivetorchesdeep .items-list .item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fivetorchesdeep .items-list .item-name {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  margin: 0;
+  overflow: hidden;
+  font-size: 13px;
+  text-align: left;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.fivetorchesdeep .items-list .item-name h3, .fivetorchesdeep .items-list .item-name h4 {
+  margin: 0;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.fivetorchesdeep .items-list .item-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100px;
+  flex: 0 0 100px;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.fivetorchesdeep .items-list .item-controls a {
+  font-size: 12px;
+  text-align: center;
+  margin: 0 6px;
+}
+
+.fivetorchesdeep .items-list .item {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 2px;
+  border-bottom: 1px solid #c9c7b8;
+}
+
+.fivetorchesdeep .items-list .item:last-child {
+  border-bottom: none;
+}
+
+.fivetorchesdeep .items-list .item .item-name {
+  color: #191813;
+}
+
+.fivetorchesdeep .items-list .item .item-name .item-image {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 30px;
+  flex: 0 0 30px;
+  height: 30px;
+  background-size: 30px;
+  border: none;
+  margin-right: 5px;
+}
+
+.fivetorchesdeep .items-list .item-prop {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+}
+
+.fivetorchesdeep .items-list .items-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove #eeede0;
+  font-weight: bold;
+}
+
+.fivetorchesdeep .items-list .items-header > * {
+  font-size: 12px;
+  text-align: center;
+}
+
+.fivetorchesdeep .items-list .items-header .item-name {
+  padding-left: 5px;
+  text-align: left;
+}
+
+.fivetorchesdeep .item-formula {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 200px;
+  flex: 0 0 200px;
+  padding: 0 8px;
+}
+
+.fivetorchesdeep .item button {
+  line-height: initial;
+}
+
+.fivetorchesdeep .effects .item .effect-source,
+.fivetorchesdeep .effects .item .effect-duration,
+.fivetorchesdeep .effects .item .effect-controls {
+  text-align: center;
+  border-left: 1px solid #c9c7b8;
+  border-right: 1px solid #c9c7b8;
+  font-size: 12px;
+}
+
+.fivetorchesdeep .effects .item .effect-controls {
+  border: none;
+}
+
+.fivetorchesdeep.sheet.actor.actor-character {
+  min-width: 500px;
+}
+
+.fivetorchesdeep.sheet.actor.actor-npc {
+  min-width: 500px;
+}
+
+.fivetorchesdeep .npc-box {
+  border: 1px black solid;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.fivetorchesdeep .prof-header {
+  height: 28px;
+  margin: 2px 0;
+  padding: 0;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove #eeede0;
+  font-weight: bold;
+}
+
+.fivetorchesdeep .prof-header > * {
+  font-size: 14px;
+  text-align: center;
+}
+
+.fivetorchesdeep .prof-list {
+  padding-left: 0;
+}
+
+.fivetorchesdeep .prof-item {
+  border-bottom: 1px solid #c9c7b8;
+}
+
+.fivetorchesdeep .prof-item:last-child {
+  border-bottom: none;
+}
+
+.fivetorchesdeep .prof-roll a,
+.fivetorchesdeep .prof-name,
+.fivetorchesdeep .prof-actions {
+  margin: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.fivetorchesdeep .prof-roll img {
+  max-width: initial;
+}

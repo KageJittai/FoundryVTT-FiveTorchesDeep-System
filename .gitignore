@@ -10,6 +10,3 @@ npm-debug.log
 *.lock
 jsconfig.json
 foundry
-
-# Build Files
-css/
